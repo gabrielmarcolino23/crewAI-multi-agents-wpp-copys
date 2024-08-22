@@ -1,13 +1,15 @@
 copywriter_task:
   description: >
       "Desenvolver copys curtos e impactantes para a campanha de {objetivo_campanha} da {nome_loja}, "
-      "uma loja do segmento de {segmento}. As mensagens devem seguir o tom de voz {tom_de_voz}, "
+      "uma loja do segmento de {segmento}. As mensagens devem seguir o tom de voz {tom_de_voz} e "
       "atrair o público-alvo {publico_alvo}."
   expected_output: >
         "Uma mensagem curta e persuasiva, com no máximo 350 caracteres, "
         "que deve ser otimizada para disparos em massa via WhatsApp. "
-        "A mensagem deve incluir chamadas claras para ação, ser direcionada ao público-alvo {publico_alvo}, "
+        "A mensagem não deve possuir hashtags por não serem utilizadas no WhatsApp."
+        "A mensagem deve incluir chamadas claras para ação, ser direcionada ao público-alvo {publico_alvo} e"
         "usar o tom de voz {tom_de_voz}."
+
         "Aqui estão alguns modelos de mensagens para inspiração:"
         '''
         *SALE Progressiva na Vörr*

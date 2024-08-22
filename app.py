@@ -15,6 +15,8 @@ publico_alvo = st.text_input("Público-Alvo", value="jovens adultas")
 tom_de_voz = st.text_input("Tom de Voz", value="descontraído e amigável")
 objetivo_campanha = st.text_input("Objetivo da Campanha", value="liquidação de verão")
 
+
+
 # Botão para processar os dados
 if st.button("Gerar Copy"):
     # Inputs do usuário ou de algum fluxo de dados

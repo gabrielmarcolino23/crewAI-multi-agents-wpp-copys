@@ -3,3 +3,5 @@ __pycache__
 *.pyc
 teste.py
 venv/
+db/
+agents/database_searcher.py
