@@ -9,11 +9,11 @@ os.environ["OPENAI_MODEL_NAME"] = "gpt-4o-mini-2024-07-18"
 st.title("Interface do Copywriter")
 
 # Criação de campos de input para o usuário
-nome_loja = st.text_input("Nome da Loja", value="Vorr")
-segmento = st.text_input("Segmento", value="moda feminina")
-publico_alvo = st.text_input("Público-Alvo", value="jovens adultas")
-tom_de_voz = st.text_input("Tom de Voz", value="descontraído e amigável")
-objetivo_campanha = st.text_input("Objetivo da Campanha", value="liquidação de verão")
+nome_loja = st.text_input("Nome da Loja", value="")
+segmento = st.text_input("Segmento", value="")
+publico_alvo = st.text_input("Público-Alvo", value="")
+tom_de_voz = st.text_input("Tom de Voz", value="")
+objetivo_campanha = st.text_input("Objetivo da Campanha", value="")
 
 
 

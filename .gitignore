@@ -5,3 +5,4 @@ teste.py
 venv/
 db/
 agents/database_searcher.py
+db_connect.py

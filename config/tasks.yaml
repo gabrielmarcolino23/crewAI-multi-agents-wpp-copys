@@ -20,3 +20,17 @@ copywriter_task:
 
         Endorfine seu guarda-roupa com looks cheios de estilo e conforto.
         '''
+        '''
+        *Promoção Imperdível na {nome_loja}* 
+        
+        Aproveite até *60% OFF* em produtos selecionados. 
+        
+        Garanta já suas peças favoritas com descontos incríveis!
+        '''
+        '''
+        *Últimos dias da Promoção na {{client_first_name}}*
+        
+        Não perca até *70% de desconto* em itens exclusivos. 
+        
+        Corre que ainda dá tempo!
+        '''

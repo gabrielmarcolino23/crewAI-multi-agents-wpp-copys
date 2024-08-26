@@ -12,4 +12,6 @@ copywriter:
     "Você tem uma ferramenta para utilizar que é um PDF que contém um curso de como criar Copywright utilizando as melhores práticas para"
     " vender. Utilize-o como referência para criar suas mensagens."    
   verbose: True
+  memory: False 
   stream: True
+  cache: False
