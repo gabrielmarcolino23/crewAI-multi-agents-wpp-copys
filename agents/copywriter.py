@@ -1,6 +1,6 @@
 import yaml
-from crewai import Agent, Task, Crew, Process
-from crewai_tools import FileReadTool, PDFSearchTool
+from crewai import Agent, Task
+from crewai_tools import PDFSearchTool
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -10,10 +10,10 @@ pdf_tool = PDFSearchTool(pdf='./docs/copy_tecnicas.pdf')
 
 
 # Carregar arquivo YAML
-with open('config/agents.yaml', 'r') as file:
+with open('config/agents.yaml', 'r', encoding='utf-8') as file:
     agents_config = yaml.safe_load(file)
 
-with open('config/tasks.yaml', 'r') as file:
+with open('config/tasks.yaml', 'r', encoding='utf-8') as file:
     tasks_config = yaml.safe_load(file)
 
 def copywriter():

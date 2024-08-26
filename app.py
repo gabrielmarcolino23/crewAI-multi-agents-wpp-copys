@@ -8,6 +8,11 @@ os.environ["OPENAI_MODEL_NAME"] = "gpt-4o-mini-2024-07-18"
 
 st.title("Interface do Copywriter")
 
+tipo_campanha = st.selectbox(
+    "Tipo de Campanha de WhatsApp",
+    options=["Data Sazonal", "Lançamento de produto", "Lançamento de coleção"]
+)
+
 # Criação de campos de input para o usuário
 nome_loja = st.text_input("Nome da Loja", value="")
 segmento = st.text_input("Segmento", value="")
@@ -25,7 +30,8 @@ if st.button("Gerar Copy"):
         "segmento": segmento,
         "publico_alvo": publico_alvo,
         "tom_de_voz": tom_de_voz,
-        "objetivo_campanha": objetivo_campanha
+        "objetivo_campanha": objetivo_campanha,
+        "tipo_campanha": tipo_campanha
     }
 
     copywriter_agent, copywriter_task = copywriter()
@@ -36,8 +42,8 @@ if st.button("Gerar Copy"):
         process=Process.sequential
     )
 
+    # Interpolar apenas placeholders {exemplo}, não {{exemplo}}
     resultado_final = crew.kickoff(inputs=dados_cliente)
 
     st.write("**Resultado Final:**")
     st.write(resultado_final)
-

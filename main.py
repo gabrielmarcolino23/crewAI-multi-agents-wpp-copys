@@ -13,7 +13,8 @@ dados_cliente = {
     "segmento": "moda feminina",
     "publico_alvo": "jovens adultas",
     "tom_de_voz": "descontraído e amigável",
-    "objetivo_campanha": "liquidação de verão"
+    "objetivo_campanha": "liquidação de verão",
+    "tipo_campanha": "Liquidação"
 }
 
 copywriter_agent, copywriter_task = copywriter()
