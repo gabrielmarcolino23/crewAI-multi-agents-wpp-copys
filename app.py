@@ -10,7 +10,9 @@ st.title("Interface do Copywriter")
 
 tipo_campanha = st.selectbox(
     "Tipo de Campanha de WhatsApp",
-    options=["Data Sazonal", "Lançamento de produto", "Lançamento de coleção"]
+    options=["Data Comemorativa", "Lançamento de produto", "Lançamento de coleção",
+              "Liquidação", "Carrinho Abandonado", "NPS", 
+              "Aniversário Cliente","Pós-Venda", "Giftback"]
 )
 
 # Criação de campos de input para o usuário

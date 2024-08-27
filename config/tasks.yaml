@@ -2,58 +2,169 @@ copywriter_task:
   description: >
     "Criar mensagens curtas e impactantes para a campanha de {objetivo_campanha} da {nome_loja}, uma loja do segmento de {segmento}."
     " As mensagens devem ser personalizadas para o público-alvo {publico_alvo}, adaptando o tom de voz {tom_de_voz} e utilizando as variáveis disponíveis de forma relevante."
-    " Dependendo do tipo de campanha ({tipo_campanha}) – seja 'Data Sazonal', 'Lançamento de produto' ou 'Lançamento de coleção' – a mensagem deve ser ajustada conforme as práticas recomendadas para cada contexto."
+    " Dependendo do tipo de campanha ({tipo_campanha}) – como 'Data Comemorativa', 'Lançamento de produto' ou 'Liquidação' – a mensagem deve ser ajustada conforme as práticas recomendadas para cada contexto."
   expected_output: |
     Uma mensagem de até 350 caracteres, persuasiva e otimizada para disparos em massa via WhatsApp.
     A mensagem deve ser personalizada e adaptada com base nas variáveis fornecidas, como {{client_first_name}}, {{last_purchase_date}}, {{giftback_code}}, entre outras.
     As variáveis da Zoppy devem permanecer no formato de placeholder (por exemplo, {{client_first_name}}) para que sejam substituídas por outra parte do sistema posteriormente.
     Utilize o tom de voz {tom_de_voz} e certifique-se de que a mensagem ressoe com o público-alvo {publico_alvo} e o objetivo da campanha ({objetivo_campanha}).
     Ajuste o conteúdo para maximizar o impacto de acordo com o tipo de campanha ({tipo_campanha}):
-    - Para 'Data Sazonal', enfatize urgência, relevância temporal e temas específicos da data.
-    - Para 'Lançamento de produto', destaque novidades, benefícios exclusivos e crie curiosidade.
-    - Para 'Lançamento de coleção', foque em tendências, exclusividade e apelo visual.
-    Aqui estão alguns exemplos para inspiração:
+    Foco nas quebras de linha elas são importantes para a formatação da mensagem no WhatsApp.
+  exemple:
+    # Exemplo para 'Data Comemorativa'
+    - input:
+        tipo_campanha: "Data Comemorativa"
+        objetivo_campanha: "Dia das Mães"
+        nome_loja: "Loja Exemplo"
+        publico_alvo: "Mães e famílias"
+        tom_de_voz: "Afetivo"
+      output: |
+        Oi, {{client_first_name}}! 💐
 
-    **Data Sazonal:**
-    '''
-    Oi, {{client_first_name}}! 😊
+        Feliz Dia das Mães! Para celebrar esta data tão especial, preparamos ofertas exclusivas para você. Aproveite 20% de desconto em toda a nossa loja!
 
-    Aproveitando que a [Nome da Data Sazonal] está chegando, preparamos algo especial para você! É a oportunidade perfeita para garantir uma condição exclusiva e celebrar essa data de um jeito único.
+        Com carinho,
+        Equipe {{company_name}}
 
-    Não perca tempo e dê uma olhada no que preparamos com tanto carinho! Estamos sempre aqui para o que precisar.
+    # Exemplo para 'Lançamento de Produto'
+    - input:
+        tipo_campanha: "Lançamento de Produto"
+        objetivo_campanha: "Divulgar Novo Produto"
+        nome_loja: "Loja Exemplo"
+        publico_alvo: "Tech Enthusiasts"
+        tom_de_voz: "Inovador"
+      output: |
+        Olá, {{client_first_name}}! 🚀
 
-    Com gratidão, 
-    Equipe {{company_name}}
+        Acabamos de lançar um produto inovador que você vai adorar. Seja um dos primeiros a descobrir!
 
-    {{store_url}} 
-    '''
+        Use o código {{giftback_code}} para um desconto especial.
 
-    **Lançamento de produto:**
-    '''
-    Oi, {{client_first_name}}! 😊
+        Equipe {{company_name}}
 
-    Estamos super animados para te contar que acabamos de lançar um novo produto que vai fazer toda a diferença! ✨ Ele foi criado com muito carinho para trazer mais autenticidade para o seu dia a dia.
+    # Exemplo para 'Lançamento de Coleção'
+    - input:
+        tipo_campanha: "Lançamento de Coleção"
+        objetivo_campanha: "Promover Nova Coleção de Outono"
+        nome_loja: "Loja Exemplo"
+        publico_alvo: "Amantes de Moda"
+        tom_de_voz: "Estiloso"
+      output: |
+        Oi, {{client_first_name}}! 🍂
 
-    Dá uma olhada no nosso site e confira essa novidade que acabou de chegar! Temos certeza de que você vai adorar.
+        A nova coleção de outono chegou! Venha conferir as últimas tendências e garanta suas peças favoritas. Exclusividade e estilo para você.
 
-    Se precisar de qualquer coisa, estamos sempre aqui para ajudar!
+        Com carinho,
+        Equipe {{company_name}}
 
-    Com carinho, 
-    Equipe {{company_name}}
-    '''
+    # Exemplo para 'Liquidação'
+    - input:
+        tipo_campanha: "Liquidação"
+        objetivo_campanha: "Queima de Estoque"
+        nome_loja: "Loja Exemplo"
+        publico_alvo: "Compradores Econômicos"
+        tom_de_voz: "Urgente"
+      output: |
+        Atenção, {{client_first_name}}! 🔥
 
-    **Lançamento de coleção:**
-    '''
-    Oi, {{client_first_name}}! 😊
+        Nossa grande liquidação começou! Descontos de até 70% em itens selecionados.
 
-    Temos uma novidade que mal podemos esperar para compartilhar: nossa nova coleção chegou! 🛍️ Cada peça foi pensada com muito cuidado para trazer o que há de melhor para você.
+        Corra, pois é por tempo limitado!
 
-    Dê uma olhada no site e descubra os novos itens que vão transformar o seu estilo e deixar tudo ainda mais especial.
+        Visite: {{store_url}}
 
-    Esperamos que você ame tanto quanto nós amamos criar essa coleção para você! 💖
+    # Exemplo para 'Carrinho Abandonado'
+    - input:
+        tipo_campanha: "Carrinho Abandonado"
+        objetivo_campanha: "Recuperação de Vendas"
+        nome_loja: "Loja Exemplo"
+        publico_alvo: "Compradores Indecisos"
+        tom_de_voz: "Gentil"
+      output: |
+        Olá, {{client_first_name}}!
 
-    Com carinho, 
-    Equipe {{company_name}}
+        Notamos que você deixou alguns itens no carrinho. Aproveite 10% de desconto ao finalizar sua compra agora!
 
-    {{store_url}}
-    '''
+        Estamos aqui para ajudar: {{abandoned_cart_url}}
+
+    # Exemplo para 'NPS'
+    - input:
+        tipo_campanha: "NPS"
+        objetivo_campanha: "Solicitação de Feedback"
+        nome_loja: "Loja Exemplo"
+        publico_alvo: "Clientes Recentes"
+        tom_de_voz: "Amigável"
+      output: |
+        Oi, {{client_first_name}}!
+
+        Gostaríamos de saber como foi sua experiência de compra. Por favor, avalie-nos aqui: {{nps_link}}.
+
+        Agradecemos o seu feedback! 💬
+
+    # Exemplo para 'Aniversário Cliente'
+    - input:
+        tipo_campanha: "Aniversário Cliente"
+        objetivo_campanha: "Fidelização"
+        nome_loja: "Loja Exemplo"
+        publico_alvo: "Clientes Fiéis"
+        tom_de_voz: "Carinhoso"
+      output: |
+        Feliz Aniversário, {{client_first_name}}! 🎉
+
+        Para comemorar, estamos oferecendo um presente especial. Use o código {{giftback_code}} para um desconto exclusivo.
+
+        Com carinho,
+        Equipe {{company_name}}
+
+    # Exemplo para 'Pós-Venda'
+    - input:
+        tipo_campanha: "Pós-Venda"
+        objetivo_campanha: "Agradecimento"
+        nome_loja: "Loja Exemplo"
+        publico_alvo: "Clientes Recém-Compradores"
+        tom_de_voz: "Grato"
+      output: |
+        Oi, {{client_first_name}}! 😊
+
+        Agradecemos por sua recente compra. Esperamos que você esteja adorando seu novo produto!
+
+        Se precisar de qualquer coisa, estamos aqui para ajudar!
+
+        Com carinho,
+        Equipe {{company_name}}
+
+    # Exemplo para 'Giftback'
+    - input:
+        tipo_campanha: "Giftback"
+        objetivo_campanha: "Recompensa de Fidelidade"
+        nome_loja: "Loja Exemplo"
+        publico_alvo: "Clientes Frequentes"
+        tom_de_voz: "Incentivador"
+      output: |
+        Oi, {{client_first_name}}! 💌
+
+        Como forma de agradecimento por sua fidelidade, oferecemos um Giftback de {{giftback_amount}} para sua próxima compra!
+
+        Não perca!
+
+        Equipe {{company_name}}
+
+
+    # Exemplo para 'Giftback'
+    - input:
+        tipo_campanha: "Giftback"
+        objetivo_campanha: "Recompensa de Fidelidade"
+        nome_loja: "Loja Exemplo"
+        publico_alvo: "Clientes Frequentes"
+        tom_de_voz: "Incentivador"
+      output: |
+        "Olá, {{client_first_name}}!
+
+        Sentimos sua falta na {{company_name}}! 🥹 Para você endorfinar seu guarda-roupa, preparamos um giftback especial.
+
+        Use o código {{giftback_code}} e aproveite {{giftback_amount}} de desconto na sua próxima compra até dia {{giftback_expiry_date}}.
+
+        Esperamos vê-lo(a) em breve!
+
+        Abraços,
+        Equipe {{company_name}}"
