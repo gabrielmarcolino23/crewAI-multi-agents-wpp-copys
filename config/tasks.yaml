@@ -12,11 +12,12 @@ copywriter_task:
     Foco nas quebras de linha elas são importantes para a formatação da mensagem no WhatsApp.
   exemple:
     # Exemplo para 'Data Comemorativa'
-    - input:
+     - input:
         tipo_campanha: "Data Comemorativa"
-        objetivo_campanha: "Dia das Mães"
+        objetivo_campanha: "Promoção para o dia das mães"
         nome_loja: "Loja Exemplo"
-        publico_alvo: "Mães e famílias"
+        segmento: "Moda"
+        publico_alvo: "Jovens e Adultos que desejam presentear suas mães"
         tom_de_voz: "Afetivo"
       output: |
         Oi, {{client_first_name}}! 💐
@@ -31,6 +32,7 @@ copywriter_task:
         tipo_campanha: "Lançamento de Produto"
         objetivo_campanha: "Divulgar Novo Produto"
         nome_loja: "Loja Exemplo"
+        segmento: "Tecnologia"
         publico_alvo: "Tech Enthusiasts"
         tom_de_voz: "Inovador"
       output: |
@@ -47,6 +49,7 @@ copywriter_task:
         tipo_campanha: "Lançamento de Coleção"
         objetivo_campanha: "Promover Nova Coleção de Outono"
         nome_loja: "Loja Exemplo"
+        segmento: "Moda"
         publico_alvo: "Amantes de Moda"
         tom_de_voz: "Estiloso"
       output: |
@@ -62,6 +65,7 @@ copywriter_task:
         tipo_campanha: "Liquidação"
         objetivo_campanha: "Queima de Estoque"
         nome_loja: "Loja Exemplo"
+        segmento: "Eletrônicos"
         publico_alvo: "Compradores Econômicos"
         tom_de_voz: "Urgente"
       output: |
@@ -78,6 +82,7 @@ copywriter_task:
         tipo_campanha: "Carrinho Abandonado"
         objetivo_campanha: "Recuperação de Vendas"
         nome_loja: "Loja Exemplo"
+        segmento: "Moda"
         publico_alvo: "Compradores Indecisos"
         tom_de_voz: "Gentil"
       output: |
@@ -92,6 +97,7 @@ copywriter_task:
         tipo_campanha: "NPS"
         objetivo_campanha: "Solicitação de Feedback"
         nome_loja: "Loja Exemplo"
+        segmento: "Serviços"
         publico_alvo: "Clientes Recentes"
         tom_de_voz: "Amigável"
       output: |
@@ -106,6 +112,7 @@ copywriter_task:
         tipo_campanha: "Aniversário Cliente"
         objetivo_campanha: "Fidelização"
         nome_loja: "Loja Exemplo"
+        segmento: "Moda"
         publico_alvo: "Clientes Fiéis"
         tom_de_voz: "Carinhoso"
       output: |
@@ -121,6 +128,7 @@ copywriter_task:
         tipo_campanha: "Pós-Venda"
         objetivo_campanha: "Agradecimento"
         nome_loja: "Loja Exemplo"
+        segmento: "Eletrodomésticos"
         publico_alvo: "Clientes Recém-Compradores"
         tom_de_voz: "Grato"
       output: |
@@ -138,27 +146,11 @@ copywriter_task:
         tipo_campanha: "Giftback"
         objetivo_campanha: "Recompensa de Fidelidade"
         nome_loja: "Loja Exemplo"
+        segmento: "Moda"
         publico_alvo: "Clientes Frequentes"
         tom_de_voz: "Incentivador"
       output: |
-        Oi, {{client_first_name}}! 💌
-
-        Como forma de agradecimento por sua fidelidade, oferecemos um Giftback de {{giftback_amount}} para sua próxima compra!
-
-        Não perca!
-
-        Equipe {{company_name}}
-
-
-    # Exemplo para 'Giftback'
-    - input:
-        tipo_campanha: "Giftback"
-        objetivo_campanha: "Recompensa de Fidelidade"
-        nome_loja: "Loja Exemplo"
-        publico_alvo: "Clientes Frequentes"
-        tom_de_voz: "Incentivador"
-      output: |
-        "Olá, {{client_first_name}}!
+        Olá, {{client_first_name}}!
 
         Sentimos sua falta na {{company_name}}! 🥹 Para você endorfinar seu guarda-roupa, preparamos um giftback especial.
 
@@ -167,4 +159,4 @@ copywriter_task:
         Esperamos vê-lo(a) em breve!
 
         Abraços,
-        Equipe {{company_name}}"
+        Equipe {{company_name}}
