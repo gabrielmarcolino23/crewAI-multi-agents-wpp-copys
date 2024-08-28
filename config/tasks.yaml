@@ -144,19 +144,21 @@ copywriter_task:
     # Exemplo para 'Giftback'
     - input:
         tipo_campanha: "Giftback"
-        objetivo_campanha: "Recompensa de Fidelidade"
+        objetivo_campanha: "Recompra após 90 dias com cupom de giftback"
         nome_loja: "Loja Exemplo"
-        segmento: "Moda"
-        publico_alvo: "Clientes Frequentes"
-        tom_de_voz: "Incentivador"
+        segmento: "beachwear "
+        publico_alvo: "Jovens adultas mulheres"
+        tom_de_voz: "Amigavel"
       output: |
         Olá, {{client_first_name}}!
 
-        Sentimos sua falta na {{company_name}}! 🥹 Para você endorfinar seu guarda-roupa, preparamos um giftback especial.
+        Sentimos sua falta na {{company_name}}! 🥹 Para você continuar arrasando com o melhor do beachwear, preparamos um giftback especial só para você.
 
-        Use o código {{giftback_code}} e aproveite {{giftback_amount}} de desconto na sua próxima compra até dia {{giftback_expiry_date}}.
+        Use o código {{giftback_code}} e aproveite **{{giftback_amount}}** de desconto na sua próxima compra. Mas corra, é só até dia **{{gitback_expiry_date}}**!
 
-        Esperamos vê-lo(a) em breve!
+        Estamos esperando por você! 🌴
 
-        Abraços,
+        Com carinho, 
         Equipe {{company_name}}
+
+        {{store_url}}
