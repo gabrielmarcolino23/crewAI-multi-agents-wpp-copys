@@ -110,18 +110,24 @@ copywriter_task:
     # Exemplo para 'Aniversário Cliente'
     - input:
         tipo_campanha: "Aniversário Cliente"
-        objetivo_campanha: "Fidelização"
+        objetivo_campanha: "Celebrar o aniversário do cliente com uma mensagem especial e oferecer um presente para incentivar uma nova compra"
         nome_loja: "Loja Exemplo"
-        segmento: "Moda"
-        publico_alvo: "Clientes Fiéis"
-        tom_de_voz: "Carinhoso"
+        segmento: "Moda Masculina"
+        publico_alvo: "Jovens Adultos"
+        tom_de_voz: "Atensioso"
       output: |
-        Feliz Aniversário, {{client_first_name}}! 🎉
+        Oi, {{client_first_name}}! 🎉
 
-        Para comemorar, estamos oferecendo um presente especial. Use o código {{giftback_code}} para um desconto exclusivo.
+        Parabéns pelo seu dia! 🎂 Na {{company_name}}, estamos aqui para celebrar com você e te dar um presente especial. Use o código [seu_codigo_de_desconto] e garanta *[valor do desconto]* de desconto na sua próxima compra. 🎁
 
-        Com carinho,
+        Não deixe passar, hein? Seu presente é válido até *[data_expiração_do_cupom]*. Aproveite para se presentear com peças que vão deixar seu estilo ainda mais único.
+
+        Conte sempre com a gente! Um abraço e um feliz aniversário! 🎈
+
+        Com carinho, 
         Equipe {{company_name}}
+
+        {{store_url}}
 
     # Exemplo para 'Pós-Venda'
     - input:
