@@ -40,6 +40,6 @@ copywriter:
     
     "Seu objetivo é ajustar as mensagens de maneira eficaz para maximizar o impacto com base nas informações fornecidas e no objetivo da campanha. Utilize as variáveis da Zoppy da maneira mais relevante possível para cada contexto, mantendo-as como placeholders para substituição posterior."
   verbose: False
-  memory: True
+  memory: False 
   stream: True
   cache: False
