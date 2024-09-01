@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "copy_writer"
+version = "0.1.0"
+description = "copy_writer using crewAI"
+authors = ["Your Name <you@example.com>"]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<=3.13"
+crewai = { extras = ["tools"], version = "^0.51.0" }
+
+[tool.poetry.scripts]
+copy_writer = "copy_writer.main:run"
+run_crew = "copy_writer.main:run"
+train = "copy_writer.main:train"
+replay = "copy_writer.main:replay"
+test = "copy_writer.main:test"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
