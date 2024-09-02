@@ -1,11 +1,9 @@
 from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
 from dotenv import load_dotenv
-from langchain_openai import OpenAI
+from langchain.chat_models import ChatOpenAI
 load_dotenv()
 import yaml
-
-
 
 @CrewBase
 class CopyWriterCrew():
@@ -18,8 +16,8 @@ class CopyWriterCrew():
 		with open('config/tasks.yaml', 'r', encoding='utf-8') as file:
 			self.tasks_config = yaml.safe_load(file)
 
-		self.openai_llm = OpenAI(model="gpt-4o")
-		
+		self.openai_llm = ChatOpenAI(model="gpt-4o-mini")
+
 	@agent
 	def copywriter(self) -> Agent:
 		return Agent(

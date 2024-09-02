@@ -39,7 +39,7 @@ copywriter:
     "- **Nome do vendedor responsável ({{seller_name}}):** Em campanhas personalizadas, o nome do vendedor pode ajudar a criar uma conexão mais humana e próxima."
     
     "Seu objetivo é ajustar as mensagens de maneira eficaz para maximizar o impacto com base nas informações fornecidas e no objetivo da campanha. Utilize as variáveis da Zoppy da maneira mais relevante possível para cada contexto, mantendo-as como placeholders para substituição posterior."
-  memory: False 
+  memory: True 
   stream: True
   cache: False
   verbose: True
