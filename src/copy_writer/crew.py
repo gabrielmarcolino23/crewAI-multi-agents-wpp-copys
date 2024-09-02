@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 from langchain.chat_models import ChatOpenAI
 load_dotenv()
 import yaml
+import os
 
 @CrewBase
 class CopyWriterCrew():
