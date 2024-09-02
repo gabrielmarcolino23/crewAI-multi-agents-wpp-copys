@@ -9,8 +9,8 @@ os.environ["OPENAI_MODEL_NAME"] = "gpt-4o-mini-2024-07-18"
 # Configuração da página e título
 st.set_page_config(page_title="Interface do Copywriter", page_icon="🖋", layout="wide")
 
-# Título Principal
-st.markdown("<h1 style='text-align: center; color: #4a148c;'>Criando a sua Copy</h1>", unsafe_allow_html=True)
+#Titulo pagina
+st.title("Zoppy - Copywriter")
 
 # Organização da interface em duas colunas principais
 col1, col2 = st.columns([3, 2], gap="large")
@@ -21,9 +21,8 @@ with col1:
     # Inputs do Usuário
     tipo_campanha = st.selectbox(
         "Tipo de Campanha de WhatsApp",
-        options=["Data Comemorativa", "Lançamento de produto", "Lançamento de coleção",
-                 "Liquidação", "Carrinho Abandonado", "NPS", 
-                 "Aniversário Cliente", "Pós-Venda", "Giftback"]
+        options=["Data Comemorativa", "Lançamento de produto", "Lançamento de coleção", 
+                 "Aniversário Cliente","Giftback"]
     )
 
     nome_loja = st.text_input("Nome da Loja", placeholder="Digite o nome da loja")
@@ -56,7 +55,8 @@ with col2:
         crew = Crew(
             agents=[copywriter_agent],
             tasks=[copywriter_task],
-            process=Process.sequential
+            process=Process.sequential,
+            verbose=False
         )
 
         # Gerar a copy com base nos inputs fornecidos
