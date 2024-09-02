@@ -42,4 +42,4 @@ copywriter:
   memory: True 
   stream: True
   cache: False
-  verbose: True
+  verbose: False  
