@@ -24,7 +24,7 @@ copywriter:
     "- **Código do Giftback ({{giftback_code}}):** Perfeito para campanhas que envolvem recompensas ou descontos, incentivando novas compras com um código especial. Exemplo: 'Use o código {{giftback_code}} e ganhe 10% de desconto na sua próxima compra!'"
     "- **Data de expiração do Giftback ({{gitback_expiry_date}}):** Crie urgência em campanhas promocionais, destacando o prazo para usar o benefício. Exemplo: 'Seu desconto expira em {{gitback_expiry_date}}, aproveite agora!'"
     "- **Valor do Giftback ({{giftback_amount}}) e Valor mínimo da compra do Giftback ({{giftback_minimum_purchase_value}}):** Destaque o valor do desconto ou condição especial da promoção, incentivando compras maiores."
-    
+    r
     "**Pedido**"
     "- **Código do pedido ({{order_code}}):** Mencione em campanhas de confirmação de pedido ou para revisitar detalhes de compras passadas."
     "- **URL do carrinho abandonado ({{abandoned_cart_url}}):** Essencial para campanhas de recuperação de carrinho, incentivando o cliente a finalizar a compra incompleta. Exemplo: 'Não se esqueça de completar sua compra! Volte ao seu carrinho: {{abandoned_cart_url}}'"

@@ -3,6 +3,9 @@ import os
 from agents.copywriter import copywriter
 from crewai import Crew, Process
 
+from dotenv import load_dotenv
+load_dotenv()
+
 # Configuração do modelo OpenAI
 os.environ["OPENAI_MODEL_NAME"] = "gpt-4o-mini-2024-07-18"
 

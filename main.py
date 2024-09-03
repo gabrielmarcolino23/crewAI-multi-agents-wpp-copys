@@ -1,6 +1,8 @@
 import os
 from agents.copywriter import copywriter
 #from utils.helper_functions import process_and_format_result
+from dotenv import load_dotenv
+load_dotenv()
 
 from crewai import Crew, Process
 
