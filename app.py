@@ -7,10 +7,10 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Configuração do modelo OpenAI
-os.environ["OPENAI_MODEL_NAME"] = "gpt-4o-mini-2024-07-18"
+os.environ["OPENAI_MODEL_NAME"] = "gpt-4o"
 
 # Configuração da página e título
-st.set_page_config(page_title="Interface do Copywriter", page_icon="🖋", layout="wide")
+st.set_page_config(page_title="Zoppy CopyAI", page_icon="🔵", layout="wide")
 
 #Titulo pagina
 st.title("Zoppy - Copywriter")
@@ -31,7 +31,7 @@ with col1:
     nome_loja = st.text_input("Nome da Loja", placeholder="Digite o nome da loja")
     segmento = st.text_input("Segmento", placeholder="Digite o segmento de mercado (ex: Moda, Tecnologia)")
     publico_alvo = st.text_input("Público-Alvo", placeholder="Descreva o público-alvo (ex: Jovens adultos, Profissionais)")
-    tom_de_voz = st.selectbox("Tom de Voz", options=["Formal", "Informal", "Descontraído","Persuasivo","Divertido","Atencioso","Empolgante",], index=0)
+    tom_de_voz = st.selectbox("Tom de Voz", options=["Formal", "Informal","Divertido","Amigável"], index=0)
     objetivo_campanha = st.text_input("Objetivo da Copy", placeholder="Qual o seu objetivo final ao enviar esta mensagem?")
 
 with col2:
