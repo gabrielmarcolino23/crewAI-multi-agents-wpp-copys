@@ -12,24 +12,24 @@ with open('config/agents.yaml', 'r', encoding='utf-8') as file:
 with open('config/tasks.yaml', 'r', encoding='utf-8') as file:
     tasks_config = yaml.safe_load(file)
 
-pdf_tool = PDFSearchTool(pdf='./docs/copy_tecnicas.pdf')
+# pdf_tool = PDFSearchTool(pdf='./docs/copy_tecnicas.pdf')
 
 def copywriter_giftback():
 
         # Criar agentes e tarefas a partir da configuração YAML
     copywriter_giftback_agent = Agent(
-        role=agents_config["copywriter_giftback_agent"]["role"],
-        goal=agents_config["copywriter_giftback_agent"]["goal"],
-        backstory=agents_config["copywriter_giftback_agent"]["backstory"],
-        memory=agents_config["copywriter_giftback_agent"]["memory"],
-        verbose=agents_config["copywriter_giftback_agent"]["verbose"],
-        stream=agents_config["copywriter_giftback_agent"]["stream"],
-        tools=[pdf_tool],
+        role=agents_config["copywriter_giftback"]["role"],
+        goal=agents_config["copywriter_giftback"]["goal"],
+        backstory=agents_config["copywriter_giftback"]["backstory"],
+        memory=agents_config["copywriter_giftback"]["memory"],
+        verbose=agents_config["copywriter_giftback"]["verbose"],
+        stream=agents_config["copywriter_giftback"]["stream"],
+        # tools=[pdf_tool],
     )
 
     copywriter_giftback_task = Task(
-        description=tasks_config['copywriter_giftback_agent_task']['description'],
-        expected_output=tasks_config['copywriter_giftback_agent_task']['expected_output'],
+        description=tasks_config['copywriter_giftback_task']['description'],
+        expected_output=tasks_config['copywriter_giftback_task']['expected_output'],
         agent= copywriter_giftback_agent
     )
 

@@ -1,0 +1,95 @@
+copywriter_giftback_task:
+  description: >
+    "Criar mensagens curtas e impactantes para a campanha de {objetivo_campanha} da {nome_loja}, uma loja do segmento de {segmento}."
+    " As mensagens devem ser personalizadas para o público-alvo {publico_alvo}, adaptando o tom de voz {tom_voz} e utilizando as variáveis disponíveis de forma relevante."
+    " O foco da campanha é no Giftback, então as mensagens devem criar um senso de urgência e destacar as vantagens de utilizar o Giftback disponível. A mensagem deve ser ajustada conforme as práticas recomendadas, levando em consideração as variáveis de input e o público-alvo."
+    " Importante: as variáveis de input, como {objetivo_campanha}, {segmento} e {tom_voz}, são fundamentais para gerar uma copy alinhada com o contexto específico da campanha. Embora exemplos de copys sejam fornecidos para referência, eles devem ser usados somente quando pertinentes. Se os inputs reais diferirem, as mensagens devem ser geradas levando em consideração o contexto específico e as necessidades da campanha."
+  
+  expected_output: |
+    Uma mensagem de até 450 caracteres, persuasiva e otimizada para disparos em massa via WhatsApp.
+    A mensagem deve ser personalizada e adaptada com base nas variáveis fornecidas, como {{client_first_name}}, {{giftback_code}}, {{giftback_expiry_date}}, entre outras.
+    As variáveis da Zoppy devem permanecer no formato de placeholder (por exemplo, {{client_first_name}}) para que sejam substituídas por outra parte do sistema posteriormente.
+    Utilize o tom de voz {tom_voz} e certifique-se de que a mensagem ressoe com o público-alvo {publico_alvo} e o objetivo da campanha ({objetivo_campanha}).
+    Ajuste o conteúdo para maximizar o impacto de acordo com o tipo de campanha "Giftback".
+    Lembre-se de usar quebras de linha, pois elas são importantes para a formatação da mensagem no WhatsApp.
+
+    ### Estrutura de uma Mensagem de Giftback para WhatsApp:
+
+    - **Cabeçalho**: Uma linha inicial que capte a atenção do cliente e que seja personalizada (por exemplo, "Oi, {{client_first_name}}! Você tem um Giftback esperando por você!").
+    
+    - **Corpo**: A parte principal da mensagem deve destacar o benefício do Giftback, incluindo o valor e como usá-lo (por exemplo, "Use o código {{giftback_code}} e ganhe {{giftback_amount}} de desconto na sua próxima compra."). Utilize quebras de linha para facilitar a leitura no WhatsApp.
+
+    - **Urgência**: Inclua uma linha que crie um senso de urgência para motivar uma ação rápida (por exemplo, "Corra! Seu Giftback expira em {{giftback_expiry_date}}.").
+
+    - **Call to Action (CTA)**: Finalize a mensagem com uma instrução clara, como "Aproveite agora: {{store_url}}".
+
+    Lembre-se de usar as variáveis da Zoppy sempre envolvendo-as por duas chaves {{}} para que o sistema possa substituí-las posteriormente.
+
+    ### Exemplos de Mensagens para Campanhas de Giftback:
+
+    - **Input**:
+        objetivo_campanha: "Recuperar clientes cujo cupom expirou"
+        nome_loja: "Loja Exemplo"
+        segmento: "Moda Feminina"
+        publico_alvo: "Mulheres de 25 a 40 anos"
+        tom_voz: "Amigável"
+
+    - **Output**:
+        ```
+        Oi {{client_first_name}}! Tudo bem? 
+
+        Você tinha um cupom de desconto aqui com a {{company_name}} que acabou vencendo 😕
+
+        Mas não se preocupe, para que você possa aproveitar a condição exclusiva, segue um novo cupom com validade até {{giftback_expiry_date}}.
+
+        Para utilizar seu giftback, você vai utilizar o cupom {{giftback_code}} na sua próxima compra no nosso site {{store_url}}.
+
+        Te aguardamos! 😁
+        ```	
+    - **Input**:
+        objetivo_campanha: "Oferecer novo Giftback para clientes cujo cupom expirou"
+        nome_loja: "Loja Exemplo"
+        segmento: "Moda de Luxo"
+        publico_alvo: "Clientes de alta renda"
+        tom_voz: "Formal"
+
+    - **Output**:
+        ```
+        Prezado(a) {{client_first_name}},
+
+        Verificamos que o seu cupom de desconto na {{company_name}} expirou recentemente. No entanto, estamos oferecendo uma nova oportunidade para você aproveitar um desconto exclusivo de *{{giftback_amount}}* na sua próxima compra.
+
+        Para utilizar seu Giftback, insira o código {{giftback_code}} ao finalizar sua compra em nosso site. Este código é válido até {{giftback_expiry_date}}.
+
+        Aguardamos sua visita em {{store_url}}.
+
+        Atenciosamente,  
+        Equipe {{company_name}}
+        ```
+
+    - **Input**:
+        objetivo_campanha: "Incentivar o uso de Giftback próximo da expiração"
+        nome_loja: "Loja Exemplo"
+        segmento: "Beachwear"
+        publico_alvo: "Mulheres jovens de 18 a 30 anos"
+        tom_voz: "Informal"
+
+    - **Output**:
+        ```
+        Ei {{client_first_name}}, tudo bem?!
+
+        Na sua última compra na {{company_name}} você ganhou um *cashback de *{{giftback_amount}}*, lembra?
+
+        Então, ele tá vencendo agora no dia *{{giftback_expiry_date}}*! 😱
+
+        Aproveite ao máximo esse mimo especial e resgate seu cashback utilizando o código {{giftback_code}} em nosso site {{store_url}}. Lembre-se, é necessário um mínimo de {{giftback_minimum_purchase_value}} para aplicar este desconto.
+
+        Aproveita! 🖤
+        ```
+
+    ### Critérios de Avaliação:
+
+    - A mensagem tem que estar em até 450 caracteres.
+    - Deve ser persuasiva, clara e com foco na urgência para utilizar o Giftback.
+    - A mensagem deve estar devidamente formatada para WhatsApp com quebras de linha.
+    - O tom de voz {tom_voz} e o público-alvo {publico_alvo} devem ser levados em consideração.

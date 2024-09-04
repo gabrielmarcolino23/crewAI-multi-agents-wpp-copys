@@ -1,34 +1,110 @@
-copywriter_data_comemorativa_task:
+copywriter_giftback_task:
   description: >
-    "Criar mensagens curtas e impactantes para a campanha de {objetivo_campanha} da {nome_loja}, uma loja do segmento de {segmento}."
-    " As mensagens devem ser personalizadas para o público-alvo {publico_alvo}, adaptando o tom de voz {tom_de_voz} e utilizando as variáveis disponíveis de forma relevante."
-    " Dependendo do tipo de campanha {tipo_campanha} – como 'Data Comemorativa', 'Lançamento de produto' ou 'Liquidação' – a mensagem deve ser ajustada conforme as práticas recomendadas para cada contexto."
-  expected_output: |
-    Uma mensagem de até 350 caracteres, persuasiva e otimizada para disparos em massa via WhatsApp.
-    A mensagem deve ser personalizada e adaptada com base nas variáveis fornecidas, como {{client_first_name}}, {{last_purchase_date}}, {{giftback_code}}, entre outras.
-    As variáveis da Zoppy devem permanecer no formato de placeholder (por exemplo, {{client_first_name}}) para que sejam substituídas por outra parte do sistema posteriormente.
-    Utilize o tom de voz {tom_de_voz} e certifique-se de que a mensagem ressoe com o público-alvo {publico_alvo} e o objetivo da campanha ({objetivo_campanha}).
-    Ajuste o conteúdo para maximizar o impacto de acordo com o tipo de campanha {tipo_campanha}.
-    Lembre-se de com as variaveis da Zoppy sempre ultilizar duas chaves {{}} para que o sistema possa substituir posteriormente.
-    Foco nas quebras de linha, pois elas são importantes para a formatação da mensagem no WhatsApp.
-
-    ### Estrutura de uma Mensagem de Campanha de WhatsApp:
-
-    Cada mensagem deve seguir a estrutura abaixo para garantir clareza e eficácia:
-
-    - **Cabeçalho**: Uma linha inicial que capte a atenção do cliente. Deve ser personalizada (por exemplo, "Atenção, {{client_first_name}}! 🔥") e pode usar emojis para criar uma conexão emocional imediata.
-    
-    - **Corpo**: A parte principal da mensagem que explica o benefício ou a oferta. Deve ser conciso, claro e direto ao ponto (por exemplo, "Nossa grande liquidação começou! Descontos de até 70% em itens selecionados."). Utilize quebras de linha para facilitar a leitura no WhatsApp.
-
-    - **Urgência**: Inclua uma linha que crie um senso de urgência para motivar uma ação rápida (por exemplo, "Corra, pois é por tempo limitado!").
-
-    - **Call to Action (CTA)**: Sempre o último item da mensagem, instruindo o cliente sobre o que fazer a seguir. Deve ser claro e fácil de entender, com um link para ação direta (por exemplo, "Compre já: {{store_url}}").
-
-    Lembre-se de deixar o CTA por último para que o cliente saiba exatamente o que fazer após ler a mensagem.
-
-    Lembre-se de com as variaveis da Zoppy sempre ultilizar duas chaves {{}} para que o sistema possa substituir posteriormente.
-
-    Vou lhe fornecer alguns tipos de modelos de mensagens validados para você se inspirar parar gerar diversos tipos de campanhas.
-    Exemplos de mensagens para diferentes tipos de campanha:
-
+    Crie uma mensagem persuasiva e curta para a campanha de Giftback com o objetivo de: {objetivo_campanha} da {nome_loja}, que opera no segmento de {segmento}.
+    A mensagem deve ser personalizada para o público-alvo {publico_alvo}, utilizando um tom de voz {tom_voz}.
+    O foco da campanha é no uso do Giftback, então a mensagem deve destacar o valor do desconto {{giftback_amount}}, o código {{giftback_code}} e a data de expiração {{giftback_expiry_date}}.
+    Certifique-se de que a mensagem seja clara, impactante, e otimizada para disparo via WhatsApp. Não utilize hashtags, pois não é uma prática comum no WhatsApp.
+    A mensagem deve seguir a estrutura recomendada: cabeçalho que chame atenção, corpo que destaque o benefício do Giftback, uma linha de urgência, e uma chamada clara para ação.
+    Utilize os placeholders de modelo de mensagem corretamente (ex.: Olá, {{client_first_name}}) e adapte o texto de acordo com as melhores práticas de copywriting.
+    Tome cuidado para não inventar informações sobre a promoção, utilize apenas os inputs fornecidos.
   
+  expected_output: |
+    - Deve conter até 450 caracteres.
+    - A mensagem deve ser persuasiva, clara e otimizada para disparo via WhatsApp.
+    - Formatação adequada para WhatsApp com quebras de linha.
+    - Alinhamento com o tom de voz {tom_voz} e consideração do público-alvo {publico_alvo}.
+    - Utilização correta dos placeholders da mensagem.
+    - A mensagem deve possuir as seguintes seções:
+        - **Cabeçalho**: Personalize para chamar atenção imediatamente (Ex.: "Oi, {{client_first_name}}! Seu Giftback está esperando!").
+        - **Corpo**: Destaque o benefício do Giftback e como usá-lo (Ex.: "Ganhe {{giftback_amount}} de desconto com o código {{giftback_code}}").
+        - **Urgência**: Crie um senso de urgência para incentivar ação rápida (Ex.: "Seu Giftback expira em {{giftback_expiry_date}}!").
+        - **Call to Action (CTA)**: Finalize com uma instrução clara (Ex.: "Compre agora: {{store_url}}").
+
+
+copywright_data_comemorativa_task:
+  description: >
+     Crie uma mensagem persuasiva e curta para a campanha de promoção por data comemorativa com o objetivo de: {objetivo_campanha} da {nome_loja}, que opera no segmento de {segmento}.
+     A mensagem deve ser personalizada para o público-alvo {publico_alvo}, utilizando um tom de voz {tom_voz} específico.
+     A copy deve levar em conta a data comemorativa selecionada, que é a {data_comemorativa}, e incentivar a compra.
+     Certifique-se de que a mensagem seja clara, impactante, e otimizada para o disparo via WhatsApp. Não utilize hashtags, pois não é uma prática comum no WhatsApp.
+     A mensagem deve seguir a estrutura recomendada: cabeçalho que capte atenção, corpo que destaque a promoção estabelecida, uma linha de urgência, e uma chamada para ação clara.
+     Utilize os placeholders de modelo de mensagem variáveis corretamente (ex.: Olá, {{client_first_name}}) e adapte o texto de acordo com as melhores práticas de copywriting.
+     Tome cuidado para não inventar informações sobre a promoção, utilize apenas os inputs fornecidas.
+  
+  expected_output: |
+    - Deve conter até 450 caracteres.
+    - A mensagem deve ser persuasiva, clara, e otimizada para disparo via WhatsApp.
+    - Formatação adequada para WhatsApp com quebras de linha.
+    - Alinhamento com o tom de voz {tom_voz} e consideração do público-alvo {publico_alvo}.
+    - Utilização correta dos placeholders da mensagem.
+    - A mensagem deve possuir as seguintes seções:
+        - **Cabeçalho**: Personalize para chamar atenção imediatamente (Ex.: "Oi, {{client_first_name}}! Seu Giftback está esperando!").
+        - **Corpo**: Destaque os benefícios do Giftback e explique como usá-lo (Ex.: "Aproveite {{giftback_amount}} de desconto usando o código {{giftback_code}}").
+        - **Urgência**: Crie um senso de urgência para incentivar ação rápida (Ex.: "Atenção! Seu Giftback expira em {{giftback_expiry_date}}!").
+        - **Call to Action (CTA)**: Finalize com uma instrução clara para ação (Ex.: "Aproveite agora: {{store_url}}").
+
+copywriter_lancamento_produto_task:
+  description: >
+    Crie uma mensagem persuasiva e curta para a campanha de lançamento do produto {nome_produto} da {nome_loja}, que opera no segmento de {segmento}.
+    A mensagem deve ser personalizada para o público-alvo {publico_alvo}, utilizando um tom de voz {tom_voz}.
+    O foco da campanha é o novo produto {nome_produto}, então a mensagem deve destacar os principais benefícios e características da {descricao_produto}.
+    Certifique-se de que a mensagem seja clara, impactante, e otimizada para disparo via WhatsApp. Não utilize hashtags, pois não é uma prática comum no WhatsApp.
+    A mensagem deve seguir a estrutura recomendada: cabeçalho que chame atenção, corpo que destaque o lançamento do produto e suas vantagens, uma linha de urgência, e uma chamada clara para ação.
+    Utilize os placeholders corretamente e adapte o texto de acordo com as melhores práticas de copywriting.
+    Tome cuidado para não inventar informações sobre o produto, utilize apenas os inputs fornecidos.
+
+  expected_output: |
+    - Deve conter até 450 caracteres.
+    - A mensagem deve ser persuasiva, clara e otimizada para disparo via WhatsApp.
+    - Formatação adequada para WhatsApp com quebras de linha.
+    - Alinhamento com o tom de voz {tom_voz} e consideração do público-alvo {publico_alvo}.
+    - Utilização correta dos placeholders da mensagem.
+    - A mensagem deve possuir as seguintes seções:
+        - **Cabeçalho**: Personalize para chamar atenção imediatamente (Ex.: "Novo na {nome_loja}: {nome_produto}!").
+        - **Corpo**: Destaque as principais características e benefícios (Ex.: "Confira o {nome_produto}, {descricao_produto}.").
+        - **Urgência**: Crie um senso de urgência (Ex.: "Garanta o seu antes que acabe!").
+        - **Call to Action (CTA)**: Finalize com uma instrução clara (Ex.: "Veja agora: {{store_url}}").
+
+
+copywriter_lancamento_colecao_task:
+  description: >
+    Crie uma mensagem persuasiva e curta para a campanha de lançamento da coleção {nome_colecao} da {nome_loja}, que opera no segmento de {segmento}.
+    A mensagem deve ser personalizada para o público-alvo {publico_alvo}, utilizando um tom de voz {tom_voz}.
+    O foco da campanha é o lançamento da nova coleção {nome_colecao}, então a mensagem deve destacar as principais tendências e exclusividades da {descricao_colecao}.
+    Certifique-se de que a mensagem seja clara, impactante, e otimizada para disparo via WhatsApp. Não utilize hashtags, pois não é uma prática comum no WhatsApp.
+    A mensagem deve seguir a estrutura recomendada: cabeçalho que chame atenção, corpo que destaque a coleção, uma linha de urgência, e uma chamada clara para ação.
+    Utilize os placeholders corretamente e adapte o texto de acordo com as melhores práticas de copywriting.
+    Tome cuidado para não inventar informações sobre a coleção, utilize apenas os inputs fornecidos.
+
+  expected_output: |
+    - Deve conter até 450 caracteres.
+    - A mensagem deve ser persuasiva, clara e otimizada para disparo via WhatsApp.
+    - Formatação adequada para WhatsApp com quebras de linha.
+    - Alinhamento com o tom de voz {tom_voz} e consideração do público-alvo {publico_alvo}.
+    - Utilização correta dos placeholders da mensagem.
+    - A mensagem deve possuir as seguintes seções:
+        - **Cabeçalho**: Personalize para chamar atenção imediatamente (Ex.: "Chegou a nova coleção {nome_colecao}!").
+        - **Corpo**: Destaque as exclusividades da coleção (Ex.: "Confira nossas peças de {descricao_colecao}.").
+        - **Urgência**: Crie um senso de urgência (Ex.: "Não perca! As peças são limitadas.").
+        - **Call to Action (CTA)**: Finalize com uma instrução clara (Ex.: "Compre agora: {{store_url}}").
+
+copywriter_aniversario_cliente_task:
+  description: >
+    Crie uma mensagem personalizada e curta para a campanha de aniversário de cliente da {nome_loja}, que opera no segmento de {segmento}.
+    A mensagem deve ser adaptada ao público-alvo {publico_alvo} e utilizar um tom de voz {tom_voz}.
+    O foco da campanha é celebrar o aniversário do cliente, oferecendo um benefício ou presente, então a mensagem deve ser calorosa e incentivadora.
+    Certifique-se de que a mensagem seja clara, amigável, e otimizada para disparo via WhatsApp. Não utilize hashtags, pois não é uma prática comum no WhatsApp.
+    A mensagem deve seguir a estrutura recomendada: cabeçalho que chame atenção, corpo que destaque o presente de aniversário e uma chamada clara para ação.
+    Utilize os placeholders corretamente e adapte o texto de acordo com as melhores práticas de copywriting.
+    Tome cuidado para não inventar informações, utilize apenas os inputs fornecidos.
+
+  expected_output: |
+    - Deve conter até 450 caracteres.
+    - A mensagem deve ser amigável, clara e otimizada para disparo via WhatsApp.
+    - Formatação adequada para WhatsApp com quebras de linha.
+    - Alinhamento com o tom de voz {tom_voz} e consideração do público-alvo {publico_alvo}.
+    - Utilização correta dos placeholders da mensagem.
+    - A mensagem deve possuir as seguintes seções:
+        - **Cabeçalho**: Personalize para chamar atenção imediatamente (Ex.: "Feliz aniversário, {{client_first_name}}! 🎉").
+        - **Corpo**: Destaque o presente ou benefício de aniversário (Ex.: "Aproveite um presente especial: {{giftback_amount}} de desconto para você.").
+        - **Call to Action (CTA)**: Finalize com uma instrução clara (Ex.: "Use o código {{giftback_code}} e aproveite em {{store_url}}").
