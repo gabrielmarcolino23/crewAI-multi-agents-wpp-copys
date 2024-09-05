@@ -1,60 +1,51 @@
-import os
 from fastapi import FastAPI
 from pydantic import BaseModel
-from crewai import Agent, Task, Crew, Process
-from crewai_tools import SerperDevTool
+from crewai import Crew, Process
+from agents.copywriter_giftback import copywriter_giftback
 
 app = FastAPI()
 
-# Carregar as chaves da API
-os.environ["OPENAI_API_KEY"] = "xx"
-os.environ["SERPER_API_KEY"] = "xx"
-os.environ["CLAUDE_KEY"] = "xx"
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 # Definir o modelo de entrada
-class JobRequirements(BaseModel):
-    job_requirements: str
-
-
-# Criar o agente pesquisador
-search_tool = SerperDevTool()
-researcher = Agent(
-    role="Recrutador Senior de Dados",
-    goal="Encontrar os melhores perfis de dados para trabalhar baseados nos requisitos da vaga",
-    verbose=True,
-    memory=True,
-    model="gpt-4o-mini",
-    backstory=(
-        "Experiencia na area de dados e formação academica em Recursos Humanos e "
-        "Especilista em Linkedin, tem dominio das principais taticas de busca de profissionais"
-    ),
-    tools=[search_tool],
-)
+class Inputs(BaseModel):
+    nome_loja: str
+    segmento: str
+    publico_alvo: str
+    tom_voz: str
+    objetivo_campanha: str
+    tipo_campanha: str
+    data_comemorativa: str
 
 
 # Definir a rota para executar a tarefa
-@app.post("/research_candidates")
-async def research_candidates(req: JobRequirements):
-    # Criar a tarefa de pesquisa
-    research_task = Task(
-        description=(
-            f"Realizar pesquisas completas para encontrar candidatos em potencial para o cargo especificado "
-            f"Utilize vários recursos e bancos de dados online para reunir uma lista abrangente de candidatos em potencial. "
-            f"Garanta que o candidato atenda os requisitos da vaga. Requisitos da vaga: {req.job_requirements}"
-        ),
-        expected_output=""" Uma lista com top 5 candidatos potenciais separada por Bullet points, 
-                            cada candidado deve conter informações de contato e breve descrição do perfil destacando a sua qualificação para a vaga 
-                            trazer junto a url para encontrar o perfil do candidato""",
-        tools=[search_tool],
-        agent=researcher,
+@app.post("/generate/copy")
+async def research_candidates(req: Inputs):
+    copywriter_agent, copywriter_task = copywriter_giftback()
+
+    crew = Crew(
+        agents=[copywriter_agent],
+        tasks=[copywriter_task],
+        process=Process.sequential,
+        verbose=True,
     )
 
-    # Criar a equipe e executar a tarefa
-    crew = Crew(agents=[researcher], tasks=[research_task], process=Process.sequential)
+    resultado_final = crew.kickoff(
+        inputs={
+            "nome_loja": req.nome_loja,
+            "segmento": req.segmento,
+            "publico_alvo": req.publico_alvo,
+            "tom_voz": req.tom_voz,
+            "objetivo_campanha": req.objetivo_campanha,
+            "tipo_campanha": req.tipo_campanha,
+            "data_comemorativa": req.data_comemorativa,
+        }
+    )
 
-    result = crew.kickoff(inputs={"job_requirements": req.job_requirements})
-    return {"result": result}
+    return {"result": resultado_final.raw}
 
 
 # Rodar o servidor usando Uvicorn

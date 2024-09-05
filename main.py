@@ -10,8 +10,6 @@ load_dotenv()
 from crewai import Crew, Process
 
 
-os.environ["OPENAI_MODEL_NAME"] = "gpt-4o"
-
 # Inputs do usuário ou de algum fluxo de dados
 dados_cliente = {
     "nome_loja": "Vorr",
