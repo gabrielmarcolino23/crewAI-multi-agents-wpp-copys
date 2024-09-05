@@ -9,5 +9,5 @@ __all__ = [
     "copywriter_giftback",
     "copywriter_lancamento_produto",
     "copywriter_lancamento_colecao",
-    "copywriter_aniversario_cliente"
+    "copywriter_aniversario_cliente",
 ]
