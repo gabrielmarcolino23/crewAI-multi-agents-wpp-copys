@@ -18,8 +18,6 @@ exemplos_tool = PDFSearchTool(pdf="./docs/exemplos.pdf")
 
 def copywriter_lancamento_produto():
 
-def copywriter_lancamento_produto():
-
     # Criar agentes e tarefas a partir da configuração YAML
     copywriter_lancamento_produto_agent = Agent(
         role=agents_config["copywriter_lancamento_produto"]["role"],
