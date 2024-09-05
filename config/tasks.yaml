@@ -7,7 +7,7 @@ copywriter_giftback_task:
     A mensagem deve seguir a estrutura recomendada: cabeçalho que chame atenção, corpo que destaque o benefício do Giftback, uma linha de urgência, e uma chamada clara para ação.
     Utilize os placeholders de modelo de mensagem corretamente (ex.: Olá, {{client_first_name}}) e adapte o texto de acordo com as melhores práticas de copywriting.
     Tome cuidado para não inventar informações sobre a promoção, utilize apenas os inputs fornecidos.
-  
+
   expected_output: |
     - Deve conter até 450 caracteres.
     - A mensagem deve ser persuasiva, clara e otimizada para disparo via WhatsApp.
@@ -17,14 +17,14 @@ copywriter_giftback_task:
 
 copywright_data_comemorativa_task:
   description: >
-     Crie uma mensagem persuasiva e curta para a campanha de promoção por data comemorativa com o objetivo de: {objetivo_campanha} da {nome_loja}, que opera no segmento de {segmento}.
-     A mensagem deve ser personalizada para o público-alvo {publico_alvo}, utilizando um tom de voz {tom_voz} específico.
-     A copy deve levar em conta a data comemorativa selecionada, que é a {data_comemorativa}, e incentivar a compra.
-     Certifique-se de que a mensagem seja clara, impactante, e otimizada para o disparo via WhatsApp. Não utilize hashtags, pois não é uma prática comum no WhatsApp.
-     A mensagem deve seguir a estrutura recomendada: cabeçalho que capte atenção, corpo que destaque a promoção estabelecida, uma linha de urgência, e uma chamada para ação clara.
-     Utilize os placeholders de modelo de mensagem variáveis corretamente (ex.: Olá, {{client_first_name}}) e adapte o texto de acordo com as melhores práticas de copywriting.
-     Tome cuidado para não inventar informações sobre a promoção, utilize apenas os inputs fornecidas.
-  
+    Crie uma mensagem persuasiva e curta para a campanha de promoção por data comemorativa com o objetivo de: {objetivo_campanha} da {nome_loja}, que opera no segmento de {segmento}.
+    A mensagem deve ser personalizada para o público-alvo {publico_alvo}, utilizando um tom de voz {tom_voz} específico.
+    A copy deve levar em conta a data comemorativa selecionada, que é a {data_comemorativa}, e incentivar a compra.
+    Certifique-se de que a mensagem seja clara, impactante, e otimizada para o disparo via WhatsApp. Não utilize hashtags, pois não é uma prática comum no WhatsApp.
+    A mensagem deve seguir a estrutura recomendada: cabeçalho que capte atenção, corpo que destaque a promoção estabelecida, uma linha de urgência, e uma chamada para ação clara.
+    Utilize os placeholders de modelo de mensagem variáveis corretamente (ex.: Olá, {{client_first_name}}) e adapte o texto de acordo com as melhores práticas de copywriting.
+    Tome cuidado para não inventar informações sobre a promoção, utilize apenas os inputs fornecidas.
+
   expected_output: |
     - Deve conter até 450 caracteres.
     - A mensagem deve ser persuasiva, clara, e otimizada para disparo via WhatsApp.

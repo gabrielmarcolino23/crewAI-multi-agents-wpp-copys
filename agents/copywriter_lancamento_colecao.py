@@ -12,7 +12,8 @@ with open('config/agents.yaml', 'r', encoding='utf-8') as file:
 with open('config/tasks.yaml', 'r', encoding='utf-8') as file:
     tasks_config = yaml.safe_load(file)
 
-pdf_tool = PDFSearchTool(pdf='./docs/variaveis.pdf')
+variaveis_tool = PDFSearchTool(pdf="./docs/variaveis.pdf")
+exemplos_tool = PDFSearchTool(pdf="./docs/exemplos.pdf")
 
 def copywriter_lacamento_colecao():
 
@@ -24,7 +25,7 @@ def copywriter_lacamento_colecao():
         memory=agents_config["copywriter_lancamento_colecao"]["memory"],
         verbose=agents_config["copywriter_lancamento_colecao"]["verbose"],
         stream=agents_config["copywriter_lancamento_colecao"]["stream"],
-        tools=[pdf_tool],
+        tools=[variaveis_tool, exemplos_tool],
     )
 
     copywriter_lancamento_colecao_task = Task(

@@ -6,7 +6,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-pdf_tool = PDFSearchTool(pdf='./docs/variaveis.pdf')
+variaveis_tool = PDFSearchTool(pdf="./docs/variaveis.pdf")
+exemplos_tool = PDFSearchTool(pdf="./docs/exemplos.pdf")
 
 
 # Carregar arquivo YAML
@@ -25,7 +26,7 @@ def copywriter():
         memory=agents_config['copywriter']['memory'],
         verbose=agents_config['copywriter']['verbose'],
         stream=True,
-        tools=[pdf_tool]
+        tools=[variaveis_tool, exemplos_tool],
     )
 
     copywriter_task = Task(

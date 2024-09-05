@@ -12,7 +12,8 @@ with open('config/agents.yaml', 'r', encoding='utf-8') as file:
 with open('config/tasks.yaml', 'r', encoding='utf-8') as file:
     tasks_config = yaml.safe_load(file)
 
-pdf_tool = PDFSearchTool(pdf='./docs/variaveis.pdf')
+variaveis_tool = PDFSearchTool(pdf="./docs/variaveis.pdf")
+exemplos_tool = PDFSearchTool(pdf="./docs/exemplos.pdf")
 
 def copywriter_data_comemorativa():
     # Criar agentes e tarefas a partir da configuração YAML
@@ -23,7 +24,7 @@ def copywriter_data_comemorativa():
         memory=agents_config["copywriter_data_comemorativa"]["memory"],
         verbose=agents_config["copywriter_data_comemorativa"]["verbose"],
         stream=agents_config["copywriter_data_comemorativa"]["stream"],
-        tools=[pdf_tool],
+        tools=[variaveis_tool, exemplos_tool],
     )
 
     copywright_data_comemorativa_task = Task(
