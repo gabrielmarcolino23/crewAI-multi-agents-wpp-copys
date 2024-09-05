@@ -1,8 +1,11 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from crewai import Crew, Process
+from agents.copywriter_aniversario_cliente import copywriter_aniversario_cliente
+from agents.copywriter_data_comemorativa import copywriter_data_comemorativa
 from agents.copywriter_giftback import copywriter_giftback
-from agents.copywriter_lancamento_produto import copywriter_lacamento_produto
+from agents.copywriter_lancamento_colecao import copywriter_lancamento_colecao
+from agents.copywriter_lancamento_produto import copywriter_lancamento_produto
 
 app = FastAPI()
 
@@ -29,7 +32,17 @@ class Inputs(BaseModel):
 # Definir a rota para executar a tarefa
 @app.post("/generate/copy")
 async def research_candidates(req: Inputs):
-    copywriter_agent, copywriter_task = copywriter_lacamento_produto()
+    match req.tipo_copy:
+        case "giftback":
+            copywriter_agent, copywriter_task = copywriter_giftback()
+        case "data_comemorativa":
+            copywriter_agent, copywriter_task = copywriter_data_comemorativa()
+        case "lancamento_produto":
+            copywriter_agent, copywriter_task = copywriter_lancamento_produto()
+        case "lancamento_colecao":
+            copywriter_agent, copywriter_task = copywriter_lancamento_colecao()
+        case "aniversario_cliente":
+            copywriter_agent, copywriter_task = copywriter_aniversario_cliente()
 
     crew = Crew(
         agents=[copywriter_agent],

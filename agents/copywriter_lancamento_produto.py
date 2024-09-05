@@ -17,16 +17,16 @@ variaveis_tool = PDFSearchTool(pdf="./docs/variaveis.pdf")
 exemplos_tool = PDFSearchTool(pdf="./docs/exemplos.pdf")
 
 
-def copywriter_lacamento_produto():
+def copywriter_lancamento_produto():
 
     # Criar agentes e tarefas a partir da configuração YAML
     copywriter_lancamento_produto_agent = Agent(
-        role=agents_config["copywriter_lancamento_produto_agent"]["role"],
-        goal=agents_config["copywriter_lancamento_produto_agent"]["goal"],
-        backstory=agents_config["copywriter_lancamento_produto_agent"]["backstory"],
-        memory=agents_config["copywriter_lancamento_produto_agent"]["memory"],
-        verbose=agents_config["copywriter_lancamento_produto_agent"]["verbose"],
-        stream=agents_config["copywriter_lancamento_produto_agent"]["stream"],
+        role=agents_config["copywriter_lancamento_produto"]["role"],
+        goal=agents_config["copywriter_lancamento_produto"]["goal"],
+        backstory=agents_config["copywriter_lancamento_produto"]["backstory"],
+        memory=agents_config["copywriter_lancamento_produto"]["memory"],
+        verbose=agents_config["copywriter_lancamento_produto"]["verbose"],
+        stream=agents_config["copywriter_lancamento_produto"]["stream"],
         tools=[variaveis_tool, exemplos_tool],
     )
 
