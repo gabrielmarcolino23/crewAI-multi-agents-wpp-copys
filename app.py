@@ -1,7 +1,6 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from crewai import Crew, Process
-from agents.copywriter_giftback import copywriter_giftback
 
 app = FastAPI()
 

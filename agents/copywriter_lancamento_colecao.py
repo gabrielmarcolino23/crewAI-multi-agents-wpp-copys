@@ -15,7 +15,7 @@ with open('config/tasks.yaml', 'r', encoding='utf-8') as file:
 variaveis_tool = PDFSearchTool(pdf="./docs/variaveis.pdf")
 exemplos_tool = PDFSearchTool(pdf="./docs/exemplos.pdf")
 
-def copywriter_lacamento_colecao():
+def copywriter_lancamento_colecao():
 
         # Criar agentes e tarefas a partir da configuração YAML
     copywriter_lancamento_colecao_agent = Agent(

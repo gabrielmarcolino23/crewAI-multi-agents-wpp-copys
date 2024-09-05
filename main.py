@@ -1,6 +1,11 @@
 import os
-from agents.copywriter_giftback import copywriter_giftback
-from agents.copywriter_data_comemorativa import copywriter_data_comemorativa
+from agents import (
+    copywriter_data_comemorativa,
+    copywriter_giftback,
+    copywriter_lancamento_produto,
+    copywriter_lancamento_colecao,
+    copywriter_aniversario_cliente
+)
 
 # from utils.helper_functions import process_and_format_result
 from dotenv import load_dotenv
