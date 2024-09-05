@@ -6,6 +6,8 @@ from agents.copywriter_data_comemorativa import copywriter_data_comemorativa
 from agents.copywriter_giftback import copywriter_giftback
 from agents.copywriter_lancamento_colecao import copywriter_lancamento_colecao
 from agents.copywriter_lancamento_produto import copywriter_lancamento_produto
+from uuid import uuid4  
+from dotenv import load_dotenv
 
 app = FastAPI()
 
@@ -32,6 +34,10 @@ class Inputs(BaseModel):
 # Definir a rota para executar a tarefa
 @app.post("/generate/copy")
 async def research_candidates(req: Inputs):
+
+    run_id = uuid4()
+    print(f"Run ID: {run_id}")
+
     match req.tipo_copy:
         case "giftback":
             copywriter_agent, copywriter_task = copywriter_giftback()
@@ -67,8 +73,10 @@ async def research_candidates(req: Inputs):
         }
     )
 
-    return {"copy": resultado_final.raw}
-
+    return {
+            "run_id": str(run_id),  
+            "copy": resultado_final.raw
+        }
 
 # Rodar o servidor usando Uvicorn
 if __name__ == "__main__":
