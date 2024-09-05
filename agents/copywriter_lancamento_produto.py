@@ -3,17 +3,19 @@ from crewai import Agent, Task
 from crewai_tools import PDFSearchTool
 
 from dotenv import load_dotenv
+
 load_dotenv()
 
 # Carregar arquivo YAML
-with open('config/agents.yaml', 'r', encoding='utf-8') as file:
+with open("config/agents.yaml", "r", encoding="utf-8") as file:
     agents_config = yaml.safe_load(file)
 
-with open('config/tasks.yaml', 'r', encoding='utf-8') as file:
+with open("config/tasks.yaml", "r", encoding="utf-8") as file:
     tasks_config = yaml.safe_load(file)
 
 variaveis_tool = PDFSearchTool(pdf="./docs/variaveis.pdf")
 exemplos_tool = PDFSearchTool(pdf="./docs/exemplos.pdf")
+
 
 def copywriter_lacamento_produto():
 
@@ -29,9 +31,11 @@ def copywriter_lacamento_produto():
     )
 
     copywriter_lancamento_produto_task = Task(
-        description=tasks_config['copywriter_lancamento_produto_task']['description'],
-        expected_output=tasks_config['copywriter_lancamento_produto_task']['expected_output'],
-        agent= copywriter_lancamento_produto_agent
+        description=tasks_config["copywriter_lancamento_produto_task"]["description"],
+        expected_output=tasks_config["copywriter_lancamento_produto_task"][
+            "expected_output"
+        ],
+        agent=copywriter_lancamento_produto_agent,
     )
 
     return copywriter_lancamento_produto_agent, copywriter_lancamento_produto_task

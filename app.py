@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from crewai import Crew, Process
 from agents.copywriter_giftback import copywriter_giftback
+from agents.copywriter_lancamento_produto import copywriter_lacamento_produto
 
 app = FastAPI()
 
@@ -15,16 +16,20 @@ class Inputs(BaseModel):
     nome_loja: str
     segmento: str
     publico_alvo: str
-    tom_voz: str
-    objetivo_campanha: str
-    tipo_campanha: str
-    data_comemorativa: str
+    tom_de_voz: str
+    objetivo_copy: str
+    tipo_copy: str
+    data_comemorativa: str | None
+    descricao_colecao: str | None
+    descricao_produto: str | None
+    nome_colecao: str | None
+    nome_produto: str | None
 
 
 # Definir a rota para executar a tarefa
 @app.post("/generate/copy")
 async def research_candidates(req: Inputs):
-    copywriter_agent, copywriter_task = copywriter_giftback()
+    copywriter_agent, copywriter_task = copywriter_lacamento_produto()
 
     crew = Crew(
         agents=[copywriter_agent],
@@ -38,14 +43,18 @@ async def research_candidates(req: Inputs):
             "nome_loja": req.nome_loja,
             "segmento": req.segmento,
             "publico_alvo": req.publico_alvo,
-            "tom_voz": req.tom_voz,
-            "objetivo_campanha": req.objetivo_campanha,
-            "tipo_campanha": req.tipo_campanha,
+            "tom_voz": req.tom_de_voz,
+            "objetivo_campanha": req.objetivo_copy,
+            "tipo_campanha": req.tipo_copy,
             "data_comemorativa": req.data_comemorativa,
+            "descricao_colecao": req.descricao_colecao,
+            "descricao_produto": req.descricao_produto,
+            "nome_colecao": req.nome_colecao,
+            "nome_produto": req.nome_produto,
         }
     )
 
-    return {"result": resultado_final.raw}
+    return {"copy": resultado_final.raw}
 
 
 # Rodar o servidor usando Uvicorn
