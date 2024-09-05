@@ -12,7 +12,7 @@ with open('config/agents.yaml', 'r', encoding='utf-8') as file:
 with open('config/tasks.yaml', 'r', encoding='utf-8') as file:
     tasks_config = yaml.safe_load(file)
 
-# pdf_tool = PDFSearchTool(pdf='./docs/copy_tecnicas.pdf')
+pdf_tool = PDFSearchTool(pdf='./docs/variaveis.pdf')
 
 def copywriter_giftback():
 
@@ -24,7 +24,7 @@ def copywriter_giftback():
         memory=agents_config["copywriter_giftback"]["memory"],
         verbose=agents_config["copywriter_giftback"]["verbose"],
         stream=agents_config["copywriter_giftback"]["stream"],
-        # tools=[pdf_tool],
+        tools=[pdf_tool],
     )
 
     copywriter_giftback_task = Task(

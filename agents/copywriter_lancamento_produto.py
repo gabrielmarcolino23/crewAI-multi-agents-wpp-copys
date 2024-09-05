@@ -12,11 +12,11 @@ with open('config/agents.yaml', 'r', encoding='utf-8') as file:
 with open('config/tasks.yaml', 'r', encoding='utf-8') as file:
     tasks_config = yaml.safe_load(file)
 
-pdf_tool = PDFSearchTool(pdf='./docs/copy_tecnicas.pdf')
+pdf_tool = PDFSearchTool(pdf='./docs/variaveis.pdf')
 
 def copywriter_lacamento_produto():
 
-        # Criar agentes e tarefas a partir da configuração YAML
+    # Criar agentes e tarefas a partir da configuração YAML
     copywriter_lancamento_produto_agent = Agent(
         role=agents_config["copywriter_lancamento_produto_agent"]["role"],
         goal=agents_config["copywriter_lancamento_produto_agent"]["goal"],

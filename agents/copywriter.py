@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-pdf_tool = PDFSearchTool(pdf='./docs/copy_tecnicas.pdf')
+pdf_tool = PDFSearchTool(pdf='./docs/variaveis.pdf')
 
 
 # Carregar arquivo YAML

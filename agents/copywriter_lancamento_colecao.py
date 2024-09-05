@@ -12,18 +12,18 @@ with open('config/agents.yaml', 'r', encoding='utf-8') as file:
 with open('config/tasks.yaml', 'r', encoding='utf-8') as file:
     tasks_config = yaml.safe_load(file)
 
-pdf_tool = PDFSearchTool(pdf='./docs/copy_tecnicas.pdf')
+pdf_tool = PDFSearchTool(pdf='./docs/variaveis.pdf')
 
 def copywriter_lacamento_colecao():
 
         # Criar agentes e tarefas a partir da configuração YAML
     copywriter_lancamento_colecao_agent = Agent(
-        role=agents_config["copywriter_lancamento_colecao_agent"]["role"],
-        goal=agents_config["copywriter_lancamento_colecao_agent"]["goal"],
-        backstory=agents_config["copywriter_lancamento_colecao_agent"]["backstory"],
-        memory=agents_config["copywriter_lancamento_colecao_agent"]["memory"],
-        verbose=agents_config["copywriter_lancamento_colecao_agent"]["verbose"],
-        stream=agents_config["copywriter_lancamento_colecao_agent"]["stream"],
+        role=agents_config["copywriter_lancamento_colecao"]["role"],
+        goal=agents_config["copywriter_lancamento_colecao"]["goal"],
+        backstory=agents_config["copywriter_lancamento_colecao"]["backstory"],
+        memory=agents_config["copywriter_lancamento_colecao"]["memory"],
+        verbose=agents_config["copywriter_lancamento_colecao"]["verbose"],
+        stream=agents_config["copywriter_lancamento_colecao"]["stream"],
         tools=[pdf_tool],
     )
 

@@ -14,12 +14,6 @@ copywriter_giftback_task:
     - Formatação adequada para WhatsApp com quebras de linha.
     - Alinhamento com o tom de voz {tom_voz} e consideração do público-alvo {publico_alvo}.
     - Utilização correta dos placeholders da mensagem.
-    - A mensagem deve possuir as seguintes seções:
-        - **Cabeçalho**: Personalize para chamar atenção imediatamente (Ex.: "Oi, {{client_first_name}}! Seu Giftback está esperando!").
-        - **Corpo**: Destaque o benefício do Giftback e como usá-lo (Ex.: "Ganhe {{giftback_amount}} de desconto com o código {{giftback_code}}").
-        - **Urgência**: Crie um senso de urgência para incentivar ação rápida (Ex.: "Seu Giftback expira em {{giftback_expiry_date}}!").
-        - **Call to Action (CTA)**: Finalize com uma instrução clara (Ex.: "Compre agora: {{store_url}}").
-
 
 copywright_data_comemorativa_task:
   description: >
@@ -37,12 +31,7 @@ copywright_data_comemorativa_task:
     - Formatação adequada para WhatsApp com quebras de linha.
     - Alinhamento com o tom de voz {tom_voz} e consideração do público-alvo {publico_alvo}.
     - Utilização correta dos placeholders da mensagem.
-    - A mensagem deve possuir as seguintes seções:
-        - **Cabeçalho**: Personalize para chamar atenção imediatamente (Ex.: "Oi, {{client_first_name}}! Seu Giftback está esperando!").
-        - **Corpo**: Destaque os benefícios do Giftback e explique como usá-lo (Ex.: "Aproveite {{giftback_amount}} de desconto usando o código {{giftback_code}}").
-        - **Urgência**: Crie um senso de urgência para incentivar ação rápida (Ex.: "Atenção! Seu Giftback expira em {{giftback_expiry_date}}!").
-        - **Call to Action (CTA)**: Finalize com uma instrução clara para ação (Ex.: "Aproveite agora: {{store_url}}").
-
+ 
 copywriter_lancamento_produto_task:
   description: >
     Crie uma mensagem persuasiva e curta para a campanha de lançamento do produto {nome_produto} da {nome_loja}, que opera no segmento de {segmento}.
@@ -59,12 +48,6 @@ copywriter_lancamento_produto_task:
     - Formatação adequada para WhatsApp com quebras de linha.
     - Alinhamento com o tom de voz {tom_voz} e consideração do público-alvo {publico_alvo}.
     - Utilização correta dos placeholders da mensagem.
-    - A mensagem deve possuir as seguintes seções:
-        - **Cabeçalho**: Personalize para chamar atenção imediatamente (Ex.: "Novo na {nome_loja}: {nome_produto}!").
-        - **Corpo**: Destaque as principais características e benefícios (Ex.: "Confira o {nome_produto}, {descricao_produto}.").
-        - **Urgência**: Crie um senso de urgência (Ex.: "Garanta o seu antes que acabe!").
-        - **Call to Action (CTA)**: Finalize com uma instrução clara (Ex.: "Veja agora: {{store_url}}").
-
 
 copywriter_lancamento_colecao_task:
   description: >
@@ -82,11 +65,6 @@ copywriter_lancamento_colecao_task:
     - Formatação adequada para WhatsApp com quebras de linha.
     - Alinhamento com o tom de voz {tom_voz} e consideração do público-alvo {publico_alvo}.
     - Utilização correta dos placeholders da mensagem.
-    - A mensagem deve possuir as seguintes seções:
-        - **Cabeçalho**: Personalize para chamar atenção imediatamente (Ex.: "Chegou a nova coleção {nome_colecao}!").
-        - **Corpo**: Destaque as exclusividades da coleção (Ex.: "Confira nossas peças de {descricao_colecao}.").
-        - **Urgência**: Crie um senso de urgência (Ex.: "Não perca! As peças são limitadas.").
-        - **Call to Action (CTA)**: Finalize com uma instrução clara (Ex.: "Compre agora: {{store_url}}").
 
 copywriter_aniversario_cliente_task:
   description: >
@@ -104,7 +82,3 @@ copywriter_aniversario_cliente_task:
     - Formatação adequada para WhatsApp com quebras de linha.
     - Alinhamento com o tom de voz {tom_voz} e consideração do público-alvo {publico_alvo}.
     - Utilização correta dos placeholders da mensagem.
-    - A mensagem deve possuir as seguintes seções:
-        - **Cabeçalho**: Personalize para chamar atenção imediatamente (Ex.: "Feliz aniversário, {{client_first_name}}! 🎉").
-        - **Corpo**: Destaque o presente ou benefício de aniversário (Ex.: "Aproveite um presente especial: {{giftback_amount}} de desconto para você.").
-        - **Call to Action (CTA)**: Finalize com uma instrução clara (Ex.: "Use o código {{giftback_code}} e aproveite em {{store_url}}").

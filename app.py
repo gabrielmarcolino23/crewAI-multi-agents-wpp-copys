@@ -1,13 +1,17 @@
 import streamlit as st
 import os
-from agents.copywriter import copywriter
+from agents.copywriter_data_comemorativa import copywriter_data_comemorativa
 from crewai import Crew, Process
-
 from dotenv import load_dotenv
+# from langsmith import Client
+
 load_dotenv()
 
 # Configuração do modelo OpenAI
-os.environ["OPENAI_MODEL_NAME"] = "gpt-4o"
+os.environ["OPENAI_MODEL_NAME"] = "gpt-4o-mini-2024-07-18   "
+
+# Inicialização do cliente LangSmith para feedback
+# client = Client(os.getenv("LANGSMITH_API_KEY"))
 
 # Configuração da página e título
 st.set_page_config(page_title="Zoppy CopyAI", page_icon="🔵", layout="wide")
@@ -39,12 +43,7 @@ with col1:
     elif tipo_campanha == "Lançamento de coleção":
         nome_colecao = st.text_input("Nome da Coleção", placeholder="Digite o nome da coleção")
         descricao_colecao = st.text_area("Descrição da Coleção", placeholder="Descreva a coleção", height=100)
-    
-    elif tipo_campanha == "Giftback":
-        giftback_amount = st.text_input("Valor do Giftback", placeholder="Digite o valor do Giftback")
-        giftback_expiry_date = st.text_input("Data de Expiração do Giftback", placeholder="Ex: 30 dias")
 
-    
     # Inputs comuns a todas as campanhas
     nome_loja = st.text_input("Nome da Loja", placeholder="Digite o nome da loja")
     segmento = st.text_input("Segmento", placeholder="Digite o segmento de mercado (ex: Moda, Tecnologia)")
@@ -66,7 +65,7 @@ with col2:
             "nome_loja": nome_loja,
             "segmento": segmento,
             "publico_alvo": publico_alvo,
-            "tom_de_voz": tom_de_voz,
+            "tom_voz": tom_de_voz,
             "objetivo_campanha": objetivo_campanha,
             "tipo_campanha": tipo_campanha
         }
@@ -80,13 +79,9 @@ with col2:
         elif tipo_campanha == "Lançamento de coleção":
             dados_cliente["nome_colecao"] = nome_colecao
             dados_cliente["descricao_colecao"] = descricao_colecao
-        elif tipo_campanha == "Giftback":
-            dados_cliente["giftback_amount"] = giftback_amount
-            dados_cliente["giftback_expiry_date"] = giftback_expiry_date
-
 
         # Criação do agente e task de copywriting com base nos inputs
-        copywriter_agent, copywriter_task = copywriter()
+        copywriter_agent, copywriter_task = copywriter_data_comemorativa()
 
         crew = Crew(
             agents=[copywriter_agent],
@@ -100,6 +95,19 @@ with col2:
 
         # Exibir o resultado na interface
         st.text_area("Resultado Final", resultado_final, height=300)
+
+        # # Solicitação de feedback após exibir o resultado
+        # st.subheader("Avalie a Copy")
+        # nota = st.slider("Qual nota você dá para esta copy?", 0, 10, step=1)
+
+        # if st.button("Enviar Feedback"):
+        #     # Enviar o feedback para o LangSmith
+        #     client.create_feedback(
+        #     run_id,
+        #     key="feedback-key",
+        #     score=1.0,
+        #     comment="comment",
+        # )
 
         # Simulação de adição do modelo (ajuste conforme necessário)
         st.success(f"Modelo '{nome_modelo}' adicionado com sucesso!")

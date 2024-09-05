@@ -12,7 +12,7 @@ with open('config/agents.yaml', 'r', encoding='utf-8') as file:
 with open('config/tasks.yaml', 'r', encoding='utf-8') as file:
     tasks_config = yaml.safe_load(file)
 
-pdf_tool = PDFSearchTool(pdf='./docs/copy_tecnicas.pdf')
+pdf_tool = PDFSearchTool(pdf='./docs/variaveis.pdf')
 
 def copywriter_aniversario_cliente():
 
