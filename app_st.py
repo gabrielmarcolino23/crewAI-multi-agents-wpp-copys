@@ -1,13 +1,13 @@
 import streamlit as st
 import os
-from agents.copywriter import copywriter
+from agents.copywriter_whatsApp import copywriter_whatsApp  # Corrigido para o nome correto da função
 from crewai import Crew, Process
 
 from dotenv import load_dotenv
 load_dotenv()
 
 # Configuração do modelo OpenAI
-os.environ["OPENAI_MODEL_NAME"] = "gpt-4o"
+os.environ["OPENAI_MODEL_NAME"] = "gpt-4"
 
 # Configuração da página e título
 st.set_page_config(page_title="Zoppy CopyAI", page_icon="🔵", layout="wide")
@@ -29,6 +29,11 @@ with col1:
     )
 
     # Inputs dinâmicos que aparecem logo após a seleção do tipo de campanha
+    # data_comemorativa = ""
+    nome_produto, descricao_produto = "", ""
+    nome_colecao, descricao_colecao = "", ""
+    giftback_amount, giftback_expiry_date = "", ""
+
     if tipo_campanha == "Data Comemorativa":
         data_comemorativa = st.text_input("Data Comemorativa", placeholder="Ex: Dia das Mães, Natal")
     
@@ -39,11 +44,6 @@ with col1:
     elif tipo_campanha == "Lançamento de coleção":
         nome_colecao = st.text_input("Nome da Coleção", placeholder="Digite o nome da coleção")
         descricao_colecao = st.text_area("Descrição da Coleção", placeholder="Descreva a coleção", height=100)
-    
-    elif tipo_campanha == "Giftback":
-        giftback_amount = st.text_input("Valor do Giftback", placeholder="Digite o valor do Giftback")
-        giftback_expiry_date = st.text_input("Data de Expiração do Giftback", placeholder="Ex: 30 dias")
-
     
     # Inputs comuns a todas as campanhas
     nome_loja = st.text_input("Nome da Loja", placeholder="Digite o nome da loja")
@@ -61,48 +61,49 @@ with col2:
 
     # Botão para Processar os Dados e Adicionar o Modelo
     if st.button("Gerar Copy"):
-        # Coleta dos dados comuns para enviar ao agente
-        dados_cliente = {
-            "nome_loja": nome_loja,
-            "segmento": segmento,
-            "publico_alvo": publico_alvo,
-            "tom_de_voz": tom_de_voz,
-            "objetivo_campanha": objetivo_campanha,
-            "tipo_campanha": tipo_campanha
-        }
+        try:
+            # Coleta dos dados comuns para enviar ao agente
+            dados_cliente = {
+                "nome_loja": nome_loja,
+                "segmento": segmento,
+                "publico_alvo": publico_alvo,
+                "tom_voz": tom_de_voz,
+                "objetivo_campanha": objetivo_campanha,
+                "tipo_campanha": tipo_campanha
+            }
 
-        # Adiciona campos específicos dependendo do tipo de campanha
-        if tipo_campanha == "Data Comemorativa":
-            dados_cliente["data_comemorativa"] = data_comemorativa
-        elif tipo_campanha == "Lançamento de produto":
-            dados_cliente["nome_produto"] = nome_produto
-            dados_cliente["descricao_produto"] = descricao_produto
-        elif tipo_campanha == "Lançamento de coleção":
-            dados_cliente["nome_colecao"] = nome_colecao
-            dados_cliente["descricao_colecao"] = descricao_colecao
-        elif tipo_campanha == "Giftback":
-            dados_cliente["giftback_amount"] = giftback_amount
-            dados_cliente["giftback_expiry_date"] = giftback_expiry_date
+            # Adiciona campos específicos dependendo do tipo de campanha
+            if tipo_campanha == "Data Comemorativa":
+                dados_cliente["data_comemorativa"] = data_comemorativa
+            elif tipo_campanha == "Lançamento de produto":
+                dados_cliente["nome_produto"] = nome_produto
+                dados_cliente["descricao_produto"] = descricao_produto
+            elif tipo_campanha == "Lançamento de coleção":
+                dados_cliente["nome_colecao"] = nome_colecao
+                dados_cliente["descricao_colecao"] = descricao_colecao
 
+            # Criação do agente e task de copywriting com base nos inputs
+            copywriter_agent, copywriter_task = copywriter_whatsApp()
 
-        # Criação do agente e task de copywriting com base nos inputs
-        copywriter_agent, copywriter_task = copywriter()
+            crew = Crew(
+                agents=[copywriter_agent],
+                tasks=[copywriter_task],
+                process=Process.sequential,
+                verbose=False
+            )
 
-        crew = Crew(
-            agents=[copywriter_agent],
-            tasks=[copywriter_task],
-            process=Process.sequential,
-            verbose=False
-        )
+            # Gerar a copy com base nos inputs fornecidos
+            resultado_final = crew.kickoff(inputs=dados_cliente)
 
-        # Gerar a copy com base nos inputs fornecidos
-        resultado_final = crew.kickoff(inputs=dados_cliente)
+            # Exibir o resultado na interface
+            st.text_area("Resultado Final", resultado_final.raw, height=300)
 
-        # Exibir o resultado na interface
-        st.text_area("Resultado Final", resultado_final, height=300)
+            # Simulação de adição do modelo (ajuste conforme necessário)
+            st.success(f"Modelo '{nome_modelo}' adicionado com sucesso!")
+        
+        except Exception as e:
+            st.error(f"Erro ao gerar a copy: {e}")
 
-        # Simulação de adição do modelo (ajuste conforme necessário)
-        st.success(f"Modelo '{nome_modelo}' adicionado com sucesso!")
     else:
         st.info("Preencha os dados acima e clique em 'Gerar Copy' para criar sua campanha e adicionar o modelo.")
 
