@@ -1,7 +1,7 @@
 import yaml
 from crewai import Agent, Task
-from crewai_tools import PDFSearchTool
-
+from utils.zoppyVariables_tool import ZoppyVariablesSearchTool
+from utils.ragExamplesWpp import RagExamplesWpp
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -12,8 +12,8 @@ with open('config/agents.yaml', 'r', encoding='utf-8') as file:
 with open('config/tasks.yaml', 'r', encoding='utf-8') as file:
     tasks_config = yaml.safe_load(file)
 
-variaveis_tool = PDFSearchTool(pdf="./docs/variaveis.pdf")
-exemplos_tool = PDFSearchTool(pdf="./docs/exemplos.pdf")
+variaveis_tool = ZoppyVariablesSearchTool(pdf="./docs/variaveis.pdf")
+exemplos_tool = RagExamplesWpp(pdf="./docs/exemplos.pdf") 
 
 def copywriter_data_comemorativa():
     # Criar agentes e tarefas a partir da configuração YAML
