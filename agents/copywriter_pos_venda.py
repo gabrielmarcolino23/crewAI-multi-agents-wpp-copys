@@ -32,7 +32,7 @@ def copywriter_pos_venda():
         description=tasks_config["copywriter_pos_venda_task"]["description"],
         expected_output=tasks_config["copywriter_pos_venda_task"]["expected_output"],
         agent=copywriter_pos_venda_agent,
-        verbose=True,
+        
     )
 
     return copywriter_pos_venda_agent, copywriter_pos_venda_task

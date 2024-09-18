@@ -32,7 +32,6 @@ def copywriter_giftback():
         description=tasks_config["copywriter_giftback_task"]["description"],
         expected_output=tasks_config["copywriter_giftback_task"]["expected_output"],
         agent=copywriter_giftback_agent,
-        verbose=True,
     )
 
     return copywriter_giftback_agent, copywriter_giftback_task

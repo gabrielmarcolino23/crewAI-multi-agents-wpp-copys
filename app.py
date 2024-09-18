@@ -9,12 +9,11 @@ from agents.copywriter_lancamento_produto import copywriter_lancamento_produto
 from uuid import uuid4  
 from dotenv import load_dotenv
 
+import asyncio  # Import necessário para lidar com processos assíncronos
+
 app = FastAPI()
 
-from dotenv import load_dotenv
-
 load_dotenv()
-
 
 # Definir o modelo de entrada
 class Inputs(BaseModel):
@@ -38,6 +37,7 @@ async def research_candidates(req: Inputs):
     run_id = uuid4()
     print(f"Run ID: {run_id}")
 
+    # Selecionar o agente e a tarefa com base no tipo de copy
     match req.tipo_copy:
         case "giftback":
             copywriter_agent, copywriter_task = copywriter_giftback()
@@ -57,26 +57,25 @@ async def research_candidates(req: Inputs):
         verbose=True,
     )
 
-    resultado_final = crew.kickoff(
-        inputs={
-            "nome_loja": req.nome_loja,
-            "segmento": req.segmento,
-            "publico_alvo": req.publico_alvo,
-            "tom_voz": req.tom_de_voz,
-            "objetivo_campanha": req.objetivo_copy,
-            "tipo_campanha": req.tipo_copy,
-            "data_comemorativa": req.data_comemorativa,
-            "descricao_colecao": req.descricao_colecao,
-            "descricao_produto": req.descricao_produto,
-            "nome_colecao": req.nome_colecao,
-            "nome_produto": req.nome_produto,
-        }
-    )
+    # Executa o kickoff de maneira assíncrona
+    resultado_final = await asyncio.to_thread(crew.kickoff, inputs={
+        "nome_loja": req.nome_loja,
+        "segmento": req.segmento,
+        "publico_alvo": req.publico_alvo,
+        "tom_voz": req.tom_de_voz,
+        "objetivo_campanha": req.objetivo_copy,
+        "tipo_campanha": req.tipo_copy,
+        "data_comemorativa": req.data_comemorativa,
+        "descricao_colecao": req.descricao_colecao,
+        "descricao_produto": req.descricao_produto,
+        "nome_colecao": req.nome_colecao,
+        "nome_produto": req.nome_produto,
+    })
 
     return {
-            "run_id": str(run_id),  
-            "copy": resultado_final.raw
-        }
+        "run_id": str(run_id),  
+        "copy": resultado_final.raw
+    }
 
 # Rodar o servidor usando Uvicorn
 if __name__ == "__main__":
