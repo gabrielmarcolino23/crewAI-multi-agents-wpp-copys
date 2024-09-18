@@ -17,7 +17,7 @@ exemplos_tool = RagExamplesWpp(pdf="./docs/exemplos.pdf")
 
 def copywriter_aniversario_cliente():
 
-        # Criar agentes e tarefas a partir da configuração YAML
+    # Criar agentes e tarefas a partir da configuração YAML
     copywriter_aniversario_cliente_agent = Agent(
         role=agents_config["copywriter_aniversario_cliente"]["role"],
         goal=agents_config["copywriter_aniversario_cliente"]["goal"],

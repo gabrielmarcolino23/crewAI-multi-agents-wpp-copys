@@ -23,7 +23,7 @@ def copywriter_pos_venda():
         goal=agents_config["copywriter_pos_venda"]["goal"],
         backstory=agents_config["copywriter_pos_venda"]["backstory"],
         memory=agents_config["copywriter_pos_venda"]["memory"],
-        verbose=True,
+        verbose=agents_config["copywriter_pos_venda"]["verbose"],
         stream=agents_config["copywriter_pos_venda"]["stream"],
         tools=[variaveis_tool, exemplos_tool],
     )
