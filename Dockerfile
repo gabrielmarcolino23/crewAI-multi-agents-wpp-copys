@@ -1,20 +1,27 @@
-# Use uma imagem base oficial do Python
 FROM python:3.11-slim
 
-# Define o diretório de trabalho
 WORKDIR /app
 
-# Copia o arquivo de requisitos para o contêiner
 COPY requirements.txt .
 
-# Instala as dependências
-RUN pip install --no-cache-dir -r requirements.txt
+RUN apt-get update && apt-get install -y --no-install-recommends \
+  build-essential \
+  && rm -rf /var/lib/apt/lists/*
 
-# Copia o restante do código da aplicação para o contêiner
+RUN pip install --no-cache-dir --upgrade pip && \
+  pip install --no-cache-dir -r requirements.txt && \
+  pip install --no-cache-dir gunicorn
+
 COPY . .
 
-# Expõe a porta 8090
-EXPOSE 8090
+# Criar um usuário não-root
+RUN adduser --disabled-password --gecos '' appuser
+USER appuser
 
-# Comando para iniciar a aplicação usando o servidor Uvicorn
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8090", "--workers", "4"]
+EXPOSE 8000
+
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "4"]
+
+
+
+#zoppy-copy-ia
