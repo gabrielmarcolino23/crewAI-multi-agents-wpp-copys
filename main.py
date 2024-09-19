@@ -6,38 +6,45 @@ from agents.copywriter_data_comemorativa import copywriter_data_comemorativa
 from agents.copywriter_giftback import copywriter_giftback
 from agents.copywriter_lancamento_colecao import copywriter_lancamento_colecao
 from agents.copywriter_lancamento_produto import copywriter_lancamento_produto
-from uuid import uuid4  
+from uuid import uuid4
 from dotenv import load_dotenv
-
-import asyncio  # Import necessário para lidar com processos assíncronos
+from enum import Enum
+import time
 
 app = FastAPI()
 
 load_dotenv()
 
-# Definir o modelo de entrada
+
+class TipoCopy(str, Enum):
+    giftback = "giftback"
+    data_comemorativa = "data_comemorativa"
+    lancamento_produto = "lancamento_produto"
+    lancamento_colecao = "lancamento_colecao"
+    aniversario_cliente = "aniversario_cliente"
+
+
 class Inputs(BaseModel):
     nome_loja: str
     segmento: str
     publico_alvo: str
     tom_de_voz: str
     objetivo_copy: str
-    tipo_copy: str
-    data_comemorativa: str | None
-    descricao_colecao: str | None
-    descricao_produto: str | None
-    nome_colecao: str | None
-    nome_produto: str | None
+    tipo_copy: TipoCopy
+    data_comemorativa: str | None = None
+    descricao_colecao: str | None = None
+    descricao_produto: str | None = None
+    nome_colecao: str | None = None
+    nome_produto: str | None = None
 
 
-# Definir a rota para executar a tarefa
 @app.post("/generate/copy")
 async def research_candidates(req: Inputs):
+    start_time = time.time()
 
     run_id = uuid4()
     print(f"Run ID: {run_id}")
 
-    # Selecionar o agente e a tarefa com base no tipo de copy
     match req.tipo_copy:
         case "giftback":
             copywriter_agent, copywriter_task = copywriter_giftback()
@@ -54,30 +61,35 @@ async def research_candidates(req: Inputs):
         agents=[copywriter_agent],
         tasks=[copywriter_task],
         process=Process.sequential,
-        verbose=True,
+        verbose=False,
     )
 
-    # Executa o kickoff de maneira assíncrona
-    resultado_final = await asyncio.to_thread(crew.kickoff, inputs={
-        "nome_loja": req.nome_loja,
-        "segmento": req.segmento,
-        "publico_alvo": req.publico_alvo,
-        "tom_voz": req.tom_de_voz,
-        "objetivo_campanha": req.objetivo_copy,
-        "tipo_campanha": req.tipo_copy,
-        "data_comemorativa": req.data_comemorativa,
-        "descricao_colecao": req.descricao_colecao,
-        "descricao_produto": req.descricao_produto,
-        "nome_colecao": req.nome_colecao,
-        "nome_produto": req.nome_produto,
-    })
+    resultado_final = await crew.kickoff_async(
+        inputs={
+            "nome_loja": req.nome_loja,
+            "segmento": req.segmento,
+            "publico_alvo": req.publico_alvo,
+            "tom_voz": req.tom_de_voz,
+            "objetivo_campanha": req.objetivo_copy,
+            "tipo_campanha": req.tipo_copy,
+            "data_comemorativa": req.data_comemorativa,
+            "descricao_colecao": req.descricao_colecao,
+            "descricao_produto": req.descricao_produto,
+            "nome_colecao": req.nome_colecao,
+            "nome_produto": req.nome_produto,
+        }
+    )
+
+    end_time = time.time()
+    execution_time = end_time - start_time
 
     return {
-        "run_id": str(run_id),  
-        "copy": resultado_final.raw
+        "run_id": str(run_id),
+        "copy": resultado_final.raw,
+        "tempo_execucao": f"{execution_time}s",
     }
 
-# Rodar o servidor usando Uvicorn
+
 if __name__ == "__main__":
     import uvicorn
 

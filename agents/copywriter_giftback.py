@@ -14,7 +14,8 @@ with open("config/tasks.yaml", "r", encoding="utf-8") as file:
     tasks_config = yaml.safe_load(file)
 
 variaveis_tool = ZoppyVariablesSearchTool(pdf="./docs/variaveis.pdf")
-exemplos_tool = RagExamplesWpp(pdf="./docs/exemplos.pdf")  
+exemplos_tool = RagExamplesWpp(pdf="./docs/exemplos.pdf")
+
 
 def copywriter_giftback():
     # Criar o agente com as ferramentas
@@ -23,9 +24,9 @@ def copywriter_giftback():
         goal=agents_config["copywriter_giftback"]["goal"],
         backstory=agents_config["copywriter_giftback"]["backstory"],
         memory=agents_config["copywriter_giftback"]["memory"],
-        verbose=True,
+        verbose=agents_config["copywriter_giftback"]["verbose"],
         stream=agents_config["copywriter_giftback"]["stream"],
-        tools=[variaveis_tool,exemplos_tool],
+        tools=[variaveis_tool, exemplos_tool],
     )
 
     copywriter_giftback_task = Task(
