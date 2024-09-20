@@ -1,4 +1,5 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends, HTTPException, status
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from pydantic import BaseModel
 from crewai import Crew, Process
 from agents.copywriter_aniversario_cliente import copywriter_aniversario_cliente
@@ -10,10 +11,43 @@ from uuid import uuid4
 from dotenv import load_dotenv
 from enum import Enum
 import time
+import jwt
+import os
 
 app = FastAPI()
 
 load_dotenv()
+
+# Configuração JWT
+SECRET_KEY = os.getenv("JWT_SECRET_KEY")
+ALGORITHM = os.getenv("JWT_SECRET_KEY_ALGORITHM")
+
+
+def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(HTTPBearer())):
+    token = credentials.credentials
+    try:
+        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        # Extrair role e email do payload
+        role = payload.get("role")
+        email = payload.get("email")
+
+        if role is None or email is None:
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                detail="Role ou email não encontrados no token",
+            )
+        # Retornar um dicionário com as informações extraídas
+        return {"role": role, "email": email}
+    except jwt.ExpiredSignatureError:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Token expirado",
+        )
+    except jwt.InvalidTokenError:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Token inválido",
+        )
 
 
 class TipoCopy(str, Enum):
@@ -39,7 +73,9 @@ class Inputs(BaseModel):
 
 
 @app.post("/generate/copy")
-async def research_candidates(req: Inputs):
+async def generate_copy(req: Inputs, current_user: dict = Depends(get_current_user)):
+    print(f"Usuário autenticado: {current_user.get('email')}")
+    print(f"Usuário autenticado: {current_user.get('role')}")
     start_time = time.time()
 
     run_id = uuid4()
@@ -50,12 +86,12 @@ async def research_candidates(req: Inputs):
             copywriter_agent, copywriter_task = copywriter_giftback()
         case "data_comemorativa":
             copywriter_agent, copywriter_task = copywriter_data_comemorativa()
-        case "lancamento_produto":
-            copywriter_agent, copywriter_task = copywriter_lancamento_produto()
-        case "lancamento_colecao":
-            copywriter_agent, copywriter_task = copywriter_lancamento_colecao()
         case "aniversario_cliente":
             copywriter_agent, copywriter_task = copywriter_aniversario_cliente()
+        case "lancamento_colecao":
+            copywriter_agent, copywriter_task = copywriter_lancamento_colecao()
+        case "lancamento_produto":
+            copywriter_agent, copywriter_task = copywriter_lancamento_produto()
 
     crew = Crew(
         agents=[copywriter_agent],
